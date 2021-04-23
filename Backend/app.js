@@ -8,7 +8,7 @@ let cors = require("cors");
 //Database URL Details 
 //Replace <username> and <password> with your username and password
 //"mongodb+srv://<username>:<password>@cluster0.7tart.mongodb.net/grocer?retryWrites=true&w=majority"
-let url = "mongodb+srv://miguel:elizabeth12@cluster0.7tart.mongodb.net/grocer?retryWrites=true&w=majority";
+let url = "mongodb+srv://<username>:<password>@cluster0.7tart.mongodb.net/grocer?retryWrites=true&w=majority";
 
 //middleware enable data from post method.
 app.use(bodyParser.urlencoded({ extended: true }));    // enable body part data  
