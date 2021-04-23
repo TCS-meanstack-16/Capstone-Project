@@ -1,45 +1,50 @@
-//Initialize all requirements
+//Load all required modules 
 let app = require("express")();
 let bodyParser = require("body-parser");
 let mongoose = require("mongoose");
+let cors = require("cors");
 
 
-//port number
-let port = 9090;
+//Database URL Details 
+//Replace <username> and <password> with your username and password
+//"mongodb+srv://<username>:<password>@cluster0.7tart.mongodb.net/grocer?retryWrites=true&w=majority"
+let url = "mongodb+srv://<username>:<password>@cluster0.7tart.mongodb.net/grocer?retryWrites=true&w=majority";
 
+//middleware enable data from post method.
+app.use(bodyParser.urlencoded({extended:true}));    // enable body part data  
+app.use(bodyParser.json());                         // json data. 
+app.use(cors());           // enable cors policy 
 
-//middlewares
-app.use(bodyParser.urlencoded({extended:true}));
-app.use(bodyParser.json());
-
-
-
-//Database URL
-/**
- * update the database name when it is created here in place of meanstack
- */
-let db_url = "mongodb://localhost::27017/meanstack";
-
-//Databse Connection
-const mongooseDBOption = {  //This is to avoid database connection warning
+//Database connection without warning 
+const mongooseDbOption ={       // to avoid warning 
     useNewUrlParser: true,
     useUnifiedTopology: true
 }
-mongoose.connect(db_url, mongooseDBOption);
+mongoose.connect(url,mongooseDbOption);   //ready to connect 
 
-//connected to the database
-let db = mongoose.connection;
-/**
- * rest of the code goes here for db connection
- */
+//Connect the data 
+mongoose.connection
 
+//link to router module like a import concept. 
+var Product = require("./router/product.router.js");
+var Order = require("./router/order.router.js");
 
-
-//Link to the router module
-var example = require("./router/example.router.js");
-app.use("/example",example);
+//URL 
 
 
+//Middleware 
+
+// http://localhost:9090/product/allProductDetails   Get App Product Details 
+// http://localhost:9090/product/retrieveProductById/102   Get App Product Details by Id  
+// http://localhost:9090/product/storeProductDetails    rest client or post man {"pid":103,"name":"Computer","price":43000}
+// http://localhost:9090/product/deleteProductById/101
+// http://localhost:9090/product/updateProductPrice  update price using pid {"pid":103,"price":48000}
+
+app.use("/product",Product)
+app.use("/order",Order)
+//app.use("/customer",Customer)
 
 
-app.listen(port, ()=>console.log(`Server running on port number: ${port}`));
+
+app.listen(9090,()=>console.log("Server running on port number 9090"));
+
