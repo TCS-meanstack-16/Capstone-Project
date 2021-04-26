@@ -29,7 +29,8 @@ let storeProductDetails = (req, res) => {
     let product = new ProductModel({
         _id: req.body.pid,
         name: req.body.name,
-        price: req.body.price
+        price: req.body.price,
+        quantity: req.body.quantity
     });
 
     product.save((err, result) => {
@@ -37,7 +38,7 @@ let storeProductDetails = (req, res) => {
             res.send("Record stored successfully ")
             //res.json({"msg":"Record stored successfully"})
         } else {
-            res.send("Record didn't store ");
+            res.send(err);
         }
     })
 
