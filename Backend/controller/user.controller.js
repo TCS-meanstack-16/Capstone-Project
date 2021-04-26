@@ -27,7 +27,6 @@ let getUserById = (req, res) => {
 let storeUserDetails = (req, res) => {
 
     let user = new UserModel({
-        _id: req.body.pid,
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         emailId: req.body.emailId,

@@ -7,4 +7,4 @@ router.get("/retrieveEmployeeById/:pid",EmployeeController.getEmployeeById)
 router.post("/createEmployee",EmployeeController.createEmployee);
 router.delete("/deleteEmployeeById/:pid",EmployeeController.deleteEmployeeById);
 
-module.exports=employee;
+module.exports=router;

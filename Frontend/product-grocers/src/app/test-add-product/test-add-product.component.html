@@ -1,7 +1,5 @@
 <div>
     <form #productRef="ngForm" (ngSubmit)="storeProduct(productRef.value)">
-        <label>ProductId</label>
-        <input type="text" name="pid" ngModel><br/>
         <label>ProductName</label>
         <input type="text" name="name" ngModel><br/>
         <label>Price</label>
@@ -11,4 +9,24 @@
         <input type="submit" value="store"/>
         <input type="reset" value="reset"/>
     </form>
+</div>
+
+<div>
+    <h2>Delete Product by Id</h2>
+    Id :<input type="text" #idRef/><br/>
+    <input type="button" value="Delete By Id"
+    (click)="deleteById(idRef.value)"/><br/>
+    {{deleteMsg}}
+</div>
+
+<div>
+    <h2>Update Product Price Using PId</h2>
+    <form #productRef="ngForm" (ngSubmit)="updatePrice(productRef.value)">
+        <label>Product Id</label>
+        <input type="text" name="pid" ngModel/><br/>
+        <label>Price</label>
+        <input type="text" name="price" ngModel/><br/>
+        <input type="submit" value="Update the Price"/>
+    </form>
+    {{updateMsg}}
 </div>

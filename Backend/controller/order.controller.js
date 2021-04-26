@@ -27,7 +27,6 @@ let getOrderById = (req,res)=> {
 let storeOrderDetails = (req,res)=> {
    
     let order = new OrderModel({
-        _id:req.body.pid,
         total:req.body.total,
         userId:req.body.userId,
         products: req.body.products,

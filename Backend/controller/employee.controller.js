@@ -26,7 +26,6 @@ let getEmployeeById = (req,res)=> {
 let createEmployee = (req,res)=> {
    
     let employee = new EmployeeModel({
-        _id: req.body.eid,
         name: req.body.name,
         email: req.body.email,
         password: req.body.password,

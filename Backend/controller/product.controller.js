@@ -27,7 +27,6 @@ let getProductById = (req, res) => {
 let storeProductDetails = (req, res) => {
 
     let product = new ProductModel({
-        _id: req.body.pid,
         name: req.body.name,
         price: req.body.price,
         quantity: req.body.quantity
@@ -68,7 +67,7 @@ let updateProduct = (req, res) => {
         { $set: 
             {   name: req.body.name,
                 price: req.body.price,
-                quantity: req.body.quantity 
+                quantity: req.body.quantity
             }
         }, 
     (err, result) => {
