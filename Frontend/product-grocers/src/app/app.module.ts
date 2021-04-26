@@ -19,6 +19,7 @@ import { ProfileInfoComponent } from './profile-info/profile-info.component';
 import { SendRequestComponent } from './send-request/send-request.component';
 import { UpdateOrderComponent } from './update-order/update-order.component';
 import { ViewTicketsComponent } from './view-tickets/view-tickets.component';
+import { TestAddProductComponent } from './test-add-product/test-add-product.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { ViewTicketsComponent } from './view-tickets/view-tickets.component';
     ProfileInfoComponent,
     SendRequestComponent,
     UpdateOrderComponent,
-    ViewTicketsComponent
+    ViewTicketsComponent,
+    TestAddProductComponent
   ],
   imports: [
     BrowserModule,
