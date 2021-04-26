@@ -60,4 +60,10 @@ let deleteEmployeeById= (req,res)=> {
 
 }
 
-module.exports={getEmployeeDetails,getEmployeeById,createEmployee,deleteEmployeeById}
+let changePassword = (req,res) => {
+    let eid = req.params.eid;
+    let employee = EmployeeModel.find({_id:eid});
+    employee.password = req.params.password;
+}
+
+module.exports={getEmployeeDetails,getEmployeeById,createEmployee,deleteEmployeeById,changePassword}

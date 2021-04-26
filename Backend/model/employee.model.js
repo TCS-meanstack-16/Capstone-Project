@@ -9,6 +9,6 @@ let EmployeeSchema = mongoose.Schema({
     isAdmin: {type: Boolean, default:false}
 })
 
-let employeeModel = mongoose.model("Employee", EmployeeSchema, "employees");
+let EmployeeModel = mongoose.model("Employee", EmployeeSchema, "employees");
 
 module.exports = EmployeeModel
