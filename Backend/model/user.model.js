@@ -15,15 +15,10 @@ let UserSchema = mongoose.Schema({
     funds: Number,
     orders: [],
     userLocked: { type: Boolean, default: false }, //setting default value to check if account is locked
-<<<<<<< HEAD
-    userId: { type: String} //attempting to auto generate userId
-})
-=======
     userId: String //attempting to auto generate userId
 }, { _id: false })
 
 UserSchema.plugin(AutoIncrement, {id: 'user', inc_field: '_id'});
->>>>>>> origin/Backend
 
 let UserModel = mongoose.model("User", UserSchema, "users");
 

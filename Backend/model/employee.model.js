@@ -11,11 +11,8 @@ let EmployeeSchema = mongoose.Schema({
     isAdmin: {type: Boolean, default:false}
 })
 
-<<<<<<< HEAD
-=======
 EmployeeSchema.plugin(AutoIncrement , {id: 'employee_id_counter', inc_field: '_id'});
 
->>>>>>> origin/Backend
 let EmployeeModel = mongoose.model("Employee", EmployeeSchema, "employees");
 
 module.exports = EmployeeModel

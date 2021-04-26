@@ -10,8 +10,8 @@ let resolveTicketById = (req,res)=> {
     TicketModel.find({_id:tid},(err,ticket)=> {
         if(!err){
             let user = ticket.userID;
-            userController.unlockUser(user);
-            ticket.deleteTicketById(ticket._id);
+            //userController.unlockUser(user);
+            deleteTicketById(req,res,tid);
         }
     })
 }
@@ -41,10 +41,10 @@ let createTicket = (req,res)=> {
 
 }
 
-let deleteTicketById = (id) => {
+let deleteTicketById = (req,res,id) => {
     console.log("In delete ticket");
     console.log(id);
-    EmployeeModel.deleteOne({_id:id},(err,result)=> {
+    TicketModel.deleteOne({_id:id},(err,result)=> {
         if(!err){
                 if(result.deletedCount>0){
                     res.send("Ticket deleted successfully")
@@ -60,7 +60,7 @@ let deleteTicketById = (id) => {
 
 let showTickets = async (req, res) => {
     try {
-        const tickets = await Post.find()
+        const tickets = await TicketModel.find()
             .sort({ createdAt: -1 });
         res.send(tickets);
     } catch (err) {
