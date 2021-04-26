@@ -10,16 +10,16 @@ import { Ticket } from '../models/ticket.model';
 })
 export class EmployeeTicketComponent implements OnInit {
 
-  constructor(public ticketSer:TicketService) { }
+  constructor(public ticketSer: TicketService) { }
 
   ngOnInit(): void {
   }
 
-  unlockAccount(ticketID:any){
+  unlockAccount(ticketID: any) {
     this.ticketSer.resolveTicket(ticketID);
   }
 
-  showTicket():Observable<Ticket[]>{
+  showTicket(): Observable<Ticket[]> {
     return this.ticketSer.getTickets();
   }
 }
