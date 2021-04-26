@@ -13,7 +13,7 @@ let UserSchema = mongoose.Schema({
     funds: Number,
     orders: [],
     userLocked: { type: Boolean, default: false }, //setting default value to check if account is locked
-    userId: { type: String, default: firstName + "." + firstName } //attempting to auto generate userId
+    userId: String //attempting to auto generate userId
 })
 
 let UserModel = mongoose.model("User", UserSchema, "users");
