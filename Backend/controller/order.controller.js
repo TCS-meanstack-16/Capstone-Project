@@ -76,4 +76,6 @@ let updateOrderStatus= (req,res)=> {
 
 }
 
+
+
 module.exports={getOrderDetails,getOrderById,storeOrderDetails,deleteOrderById,updateOrderStatus}
