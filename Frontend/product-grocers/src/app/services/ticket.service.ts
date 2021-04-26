@@ -14,7 +14,7 @@ export class TicketService {
   }
 
   getTickets():Observable<Ticket[]>{
-     return this.http.get<Ticket[]>("http://localhost:9090/product/showTickets")    //Should return array of tickets that can then be used to display tickets
+     return this.http.get<Ticket[]>("http://localhost:9090/ticket/showTickets")    //Should return array of tickets that can then be used to display tickets
   }
 
   //by default all HttpClient method return type is observable with json format data. 
