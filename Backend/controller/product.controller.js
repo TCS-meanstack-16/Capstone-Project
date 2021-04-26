@@ -27,7 +27,6 @@ let getProductById = (req, res) => {
 let storeProductDetails = (req, res) => {
 
     let product = new ProductModel({
-        _id: req.body.pid,
         name: req.body.name,
         price: req.body.price,
         quantity: req.body.quantity
@@ -60,10 +59,17 @@ let deleteProductById = (req, res) => {
 
 }
 
-let updateProductPrice = (req, res) => {
+let updateProduct = (req, res) => { 
     let pid = req.body.pid;
-    let updatedPrice = req.body.price;
-    ProductModel.updateMany({ _id: pid }, { $set: { price: updatedPrice } }, (err, result) => {
+    ProductModel.updateMany(
+        { _id: pid }, 
+        { $set: 
+            {  
+                price: req.body.price,
+                quantity: req.body.quantity
+            }
+        }, 
+    (err, result) => {
         if (!err) {
             if (result.nModified > 0) {
                 res.send("Record updated succesfully")
@@ -77,4 +83,4 @@ let updateProductPrice = (req, res) => {
 
 }
 
-module.exports = { getProductDetails, getProductById, storeProductDetails, deleteProductById, updateProductPrice }
+module.exports = { getProductDetails, getProductById, storeProductDetails, deleteProductById, updateProduct }
