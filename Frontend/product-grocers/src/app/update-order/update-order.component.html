@@ -1,1 +1,31 @@
-<p>update-order works!</p>
+<div>
+    <h2>Update Order Using PId</h2>
+    <form #orderRef="ngForm" (ngSubmit)="updateOrder(orderRef.value)">
+        <label>Order Id</label>
+        <input type="text" name="pid" ngModel/><br/>
+        <label>Status</label>
+        <select name="status" ngModel>
+            <option value="delivered">Delivered</option>
+            <option value="shipped">Shipped</option>
+            <option value="out for delivery ">Out for delivery </option>
+            <option value="pending">Pending</option>
+          </select><br/>
+        <input type="submit" value="Update the Status"/>
+    </form>
+    {{updateMsg}}
+</div>
+
+<div>
+    <table border="1">
+            <tr>
+                <th>Order id</th>
+                <th>Order Status</th>
+                <th>UserId</th>
+            </tr>
+            <tr *ngFor="let order of orders">
+                    <td>{{order._id}}</td>
+                    <td>{{order.status}}</td>
+                    <td>{{order.userId}}</td>
+            </tr>
+    </table>
+</div>

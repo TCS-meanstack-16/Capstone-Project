@@ -29,8 +29,7 @@ let storeOrderDetails = (req,res)=> {
     let order = new OrderModel({
         total:req.body.total,
         userId:req.body.userId,
-        products: req.body.products,
-        status: req.body.status
+        products: req.body.products
     });
 
     order.save((err,result)=> {
@@ -63,7 +62,7 @@ let deleteOrderById= (req,res)=> {
 let updateOrderStatus= (req,res)=> {
     let pid = req.body.pid;
     let updatedStatus = req.body.status;
-    OrderModel.updateMany({_id:pid},{$set:{price:updatedStatus}},(err,result)=> {
+    OrderModel.updateMany({_id:pid},{$set:{status:updatedStatus}},(err,result)=> {
         if(!err){
             if(result.nModified>0){
                     res.send("Record updated succesfully")

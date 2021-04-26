@@ -59,13 +59,12 @@ let deleteProductById = (req, res) => {
 
 }
 
-//Have previous values as default in form
 let updateProduct = (req, res) => { 
     let pid = req.body.pid;
     ProductModel.updateMany(
         { _id: pid }, 
         { $set: 
-            {   name: req.body.name,
+            {  
                 price: req.body.price,
                 quantity: req.body.quantity
             }
