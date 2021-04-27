@@ -92,18 +92,30 @@ let unlockUser = (req, res) => {
 let updateUserFundsById = (req, res) => {
     let userId = req.body.userId;
     let funds = req.body.total;
-    UserModel.updateOne({ _id: userId }, {$inc:{funds: funds}}, (err, result) => {
-        if (!err) {
-            if (result.nModified > 0) {
-                res.send("Record updated succesfully")
-            } else {
-                res.send("Record is not available");
+    let orderId = req.body.orderId;
+    let reason = req.body.reason;
+    UserModel.update({ _id: userId },
+        {
+            $inc: { funds: funds },
+            $set: {
+                "orders.$[outer].reason": reason
             }
-        } else {
-            res.send("Error generated " + err);
-        }
-    })
-    
+        },
+        {
+            new: true,
+            "arrayFilters": [{ "outer._id": orderId }]
+        }, (err, result) => {
+            if (!err) {
+                if (result.nModified > 0) {
+                    res.send("Record updated succesfully")
+                } else {
+                    res.send("Record is not available");
+                }
+            } else {
+                res.send("Error generated " + err);
+            }
+        })
+
 
 }
 
