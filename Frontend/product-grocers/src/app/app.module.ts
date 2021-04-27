@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ExampleCompComponent } from './example-comp/example-comp.component';
@@ -26,6 +26,7 @@ import { UpdateProductComponent } from './product-components/update-product/upda
 import { DeleteProductComponent } from './product-components/delete-product/delete-product.component';
 import { AddProductComponent } from './product-components/add-product/add-product.component';
 import { RetrieveProductsComponent } from './product-components/retrieve-products/retrieve-products.component';
+import { UserComponent } from './user/user.component';
 
 
 @NgModule({
@@ -45,20 +46,25 @@ import { RetrieveProductsComponent } from './product-components/retrieve-product
     SendRequestComponent,
     UpdateOrderComponent,
     ViewTicketsComponent,
-
     SignUpComponent,
-
     UpdateProductComponent,
     DeleteProductComponent,
     AddProductComponent,
-    RetrieveProductsComponent
+    RetrieveProductsComponent,
+    UserComponent
 
   ],
   imports: [
     BrowserModule,
+    RouterModule.forRoot([
+      {path: 'user', component: UserComponent},
+      {path: 'update-order', component: UpdateOrderComponent}
+    ]),
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
