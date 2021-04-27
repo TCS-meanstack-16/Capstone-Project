@@ -8,7 +8,8 @@ let OrderSchema = mongoose.Schema({
     total: Number,
     userId: Number,
     products: Array,
-    status: {type: String, default: "pending"}
+    status: {type: String, default: "pending"},
+    date: {type: Date, default: Date.now}
 
 })
 

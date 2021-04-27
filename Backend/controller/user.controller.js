@@ -34,8 +34,6 @@ let storeUserDetails = (req, res) => {
         dob: req.body.dob,
         phone: req.body.phone,
         address: req.body.address,
-        funds: req.body.funds,
-        orders: req.body.orders,
     });
 
     user.save((err, result) => {
@@ -68,7 +66,7 @@ let deleteUserById = (req, res) => {
 let updateUserFirstName = (req, res) => {
     let pid = req.body.pid;
     let updatedFirstName = req.body.firstName;
-    UserModel.updateMany({ _id: pid }, { $set: { price: updatedFirstName } }, (err, result) => {
+    UserModel.updateMany({ _id: pid }, { $set: { firstName: updatedFirstName } }, (err, result) => {
         if (!err) {
             if (result.nModified > 0) {
                 res.send("Record updated succesfully")
@@ -89,7 +87,6 @@ let unlockUser = (req, res) => {
 
 let updateUserFundsById = (req, res) => {
     let userId = req.body.userId;
-    console.log("getting " + userId)
     let funds = req.body.total;
     UserModel.updateOne({ _id: userId }, {$inc:{funds: funds}}, (err, result) => {
         if (!err) {
@@ -102,6 +99,7 @@ let updateUserFundsById = (req, res) => {
             res.send("Error generated " + err);
         }
     })
+    
 
 }
 
