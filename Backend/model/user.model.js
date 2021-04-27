@@ -14,7 +14,7 @@ let UserSchema = mongoose.Schema({
     address: String,
     state: String,
     city: String,
-    pincode: Number,
+    pincode: String,
     funds: {type: Number, default: 500},
     orders: [],
     userLocked: { type: Boolean, default: false }, //setting default value to check if account is locked
