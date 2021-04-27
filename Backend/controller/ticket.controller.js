@@ -4,7 +4,6 @@ let userController = require("./user.controller.js");
 //Retrieve all order details 
 
 let resolveTicketById = (req,res)=> {
-    console.log("In resolve ticket");
     let tid = req.params.tid;       //passing id through path param 
     
     TicketModel.find({_id:tid},(err,ticket)=> {
@@ -33,7 +32,6 @@ let createTicket = (req,res)=> {
     ticket.save((err,result)=> {
         if(!err){
             res.send("Ticket Created Successfully ")
-            //res.json({"msg":"Record stored successfully"})
         }else {
             res.send(err);
         }
@@ -42,8 +40,6 @@ let createTicket = (req,res)=> {
 }
 
 let deleteTicketById = (req,res,id) => {
-    console.log("In delete ticket");
-    console.log(id);
     TicketModel.deleteOne({_id:id},(err,result)=> {
         if(!err){
                 if(result.deletedCount>0){
