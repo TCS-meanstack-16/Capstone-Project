@@ -10,7 +10,7 @@ export class User {
         public address: string,
         public city: string,
         public state: string,
-        public pincode: number,
+        public pincode: string,
         public funds: number,
         public orders: Array<any>,
         public userLocked: Boolean, 

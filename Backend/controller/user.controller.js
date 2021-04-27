@@ -39,13 +39,13 @@ let storeUserDetails = (req, res) => {
         pincode: req.body.pincode,
         userId: req.body.userId,
     });
-
+    console.log(user)
     user.save((err, result) => {
         if (!err) {
             res.send("Record stored successfully ")
             //res.json({"msg":"Record stored successfully"})
         } else {
-            res.send("Record didn't store ");
+            res.send(err);
         }
     })
 

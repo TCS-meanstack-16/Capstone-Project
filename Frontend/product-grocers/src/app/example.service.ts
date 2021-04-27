@@ -14,8 +14,10 @@ export class ExampleService {
   }
 
   storeUserDetails(userRef:any){
-    this.http.post("http://localhost:9090/product/storeProductDetails",userRef,{responseType:"text"}).
+    this.http.post("http://localhost:9090/user/storeUserDetails",userRef,{responseType:"text"}).
     subscribe(result=>console.log(result),error=>console.log(error));
+    console.log(userRef);
+    
     alert('Details printed on server console');
   }
 }
