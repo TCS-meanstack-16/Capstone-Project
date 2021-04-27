@@ -9,12 +9,18 @@
 <body>
     <table id="openTickets">
         <tr>
+            <th>Ticket ID</th>
             <th>User Name</th>
             <th>User ID</th>
             <th>Reason For Lockout</th>
             <th>Unlock Account</th>
         </tr>
-        <!--Create loop to add table rows based off received list-->
+        <tr *ngFor = "let ticket of tickets">
+            <td>{{ticket._id}}</td>
+            <td>{{ticket.name}}</td>
+            <td>{{ticket.userID}}</td>
+            <td>{{ticket.reason}}</td>
+        </tr>
     </table>
 </body>
 </html>

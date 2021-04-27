@@ -19,7 +19,14 @@ import { ProfileInfoComponent } from './profile-info/profile-info.component';
 import { SendRequestComponent } from './send-request/send-request.component';
 import { UpdateOrderComponent } from './update-order/update-order.component';
 import { ViewTicketsComponent } from './view-tickets/view-tickets.component';
+
 import { SignUpComponent } from './sign-up/sign-up.component';
+
+import { UpdateProductComponent } from './product-components/update-product/update-product.component';
+import { DeleteProductComponent } from './product-components/delete-product/delete-product.component';
+import { AddProductComponent } from './product-components/add-product/add-product.component';
+import { RetrieveProductsComponent } from './product-components/retrieve-products/retrieve-products.component';
+
 
 @NgModule({
   declarations: [
@@ -38,7 +45,14 @@ import { SignUpComponent } from './sign-up/sign-up.component';
     SendRequestComponent,
     UpdateOrderComponent,
     ViewTicketsComponent,
+
     SignUpComponent
+
+    UpdateProductComponent,
+    DeleteProductComponent,
+    AddProductComponent,
+    RetrieveProductsComponent
+
   ],
   imports: [
     BrowserModule,

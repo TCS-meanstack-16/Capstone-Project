@@ -1,0 +1,13 @@
+<div>
+    <h2>Update Product Using PId</h2>
+    <form #productRef="ngForm" (ngSubmit)="updateProduct(productRef.value)">
+        <label>Product Id</label>
+        <input type="text" name="pid" ngModel/><br/>
+        <label>Price</label>
+        <input type="text" name="price" ngModel/><br/>
+        <label>Quantity</label>
+        <input type="text" name="quantity" ngModel/><br/>
+        <input type="submit" value="Update the Price"/>
+    </form>
+    {{updateMsg}}
+</div>
