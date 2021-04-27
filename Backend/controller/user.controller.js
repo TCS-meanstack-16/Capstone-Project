@@ -66,6 +66,25 @@ let deleteUserById = (req, res) => {
     })
 
 }
+let updateUser = (req, res) => {
+    let user = req.body.user
+    UserModel.replaceOne(
+        {_id : user._id},
+        user,
+        {
+          upsert: true                  
+        }, (err, result) => {
+            if (!err) {
+                if (result.nModified > 0) {
+                    res.send("Record updated succesfully")
+                } else {
+                    res.send("Record is not available");
+                }
+            } else {
+                res.send("Error generated " + err);
+            }
+        })
+}
 
 let updateUserFirstName = (req, res) => {
     let pid = req.body.pid;
@@ -164,4 +183,4 @@ let userOrderPurchase = (req, res) => {
         })
 }
 
-module.exports = { getUserDetails, getUserById, storeUserDetails, deleteUserById, updateUserFirstName, unlockUser, updateUserFundsById, userOrderPurchase }
+module.exports = { getUserDetails, getUserById, storeUserDetails, deleteUserById, updateUser, unlockUser, updateUserFundsById, userOrderPurchase }

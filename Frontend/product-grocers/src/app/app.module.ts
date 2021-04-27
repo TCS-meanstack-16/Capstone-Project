@@ -46,7 +46,7 @@ import { RetrieveProductsComponent } from './product-components/retrieve-product
     UpdateOrderComponent,
     ViewTicketsComponent,
 
-    SignUpComponent
+    SignUpComponent,
 
     UpdateProductComponent,
     DeleteProductComponent,
