@@ -37,7 +37,7 @@ let storeUserDetails = (req, res) => {
         city: req.body.city,
         state: req.body.state,
         pincode: req.body.pincode,
-        userId: req.body.userId,
+        //userId: req.body.userId,
     });
 
     user.save((err, result) => {

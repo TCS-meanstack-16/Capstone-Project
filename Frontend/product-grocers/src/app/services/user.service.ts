@@ -14,6 +14,9 @@ export class UserService {
   storeUserDetailsInfo(userRef: any) {
     this.http.post("http://localhost:9090/user/storeUserDetails", userRef, { responseType: "text" }).
       subscribe(result => console.log(result), error => console.log(error));
+    
+      
+      alert('Details printed on server console');
   }
   retrieveAllUserDetails(): Observable<User[]> {
     return this.http.get<User[]>("http://localhost:9090/user/allUserDetails")

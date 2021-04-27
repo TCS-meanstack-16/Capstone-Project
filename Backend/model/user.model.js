@@ -4,7 +4,6 @@ mongoose.Promise = global.Promise;      // creating reference.
 const AutoIncrement = require('mongoose-sequence')(mongoose);
 
 let UserSchema = mongoose.Schema({
-    _id: Number,
     firstName: String,
     lastName: String,
     emailId: String,
