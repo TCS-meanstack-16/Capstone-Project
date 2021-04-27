@@ -115,8 +115,34 @@ let updateUserFundsById = (req, res) => {
                 res.send("Error generated " + err);
             }
         })
-
-
 }
 
-module.exports = { getUserDetails, getUserById, storeUserDetails, deleteUserById, updateUserFirstName, unlockUser, updateUserFundsById }
+let userOrderPurchase = (req, res) => {
+    let order = req.body.order;
+    
+    UserModel.update({ _id: order.userId },
+        {
+            $inc: { funds: -order.total },
+            $push:
+            {
+                "orders": order
+            }
+            , upsert: true
+        },
+        {
+            new: true,
+            "arrayFilters": [{ "outer._id": order._id }]
+        }, (err, result) => {
+            if (!err) {
+                if (result.nModified > 0) {
+                    res.send("Record updated succesfully")
+                } else {
+                    res.send("Record is not available");
+                }
+            } else {
+                res.send("Error generated " + err);
+            }
+        })
+}
+
+module.exports = { getUserDetails, getUserById, storeUserDetails, deleteUserById, updateUserFirstName, unlockUser, updateUserFundsById, userOrderPurchase }
