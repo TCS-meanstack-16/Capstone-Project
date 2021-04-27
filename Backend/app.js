@@ -8,7 +8,9 @@ let cors = require("cors");
 //Database URL Details 
 //Replace <username> and <password> with your username and password
 //"mongodb+srv://<username>:<password>@cluster0.7tart.mongodb.net/grocer?retryWrites=true&w=majority"
-let url = "mongodb+srv://<username>:<password>@cluster0.7tart.mongodb.net/grocer?retryWrites=true&w=majority";
+
+let url = "mongodb+srv://miguel:zeus1007@cluster0.7tart.mongodb.net/grocer?retryWrites=true&w=majority";
+
 
 //middleware enable data from post method.
 app.use(bodyParser.urlencoded({ extended: true }));    // enable body part data  
@@ -30,6 +32,10 @@ var Product = require("./router/product.router.js");
 var Order = require("./router/order.router.js");
 var User = require("./router/user.router.js");
 
+var Employee = require("./router/employee.router.js");
+var Ticket = require("./router/ticket.router.js");
+
+
 //URL 
 
 
@@ -44,6 +50,8 @@ var User = require("./router/user.router.js");
 app.use("/product", Product)
 app.use("/order", Order)
 app.use("/user", User)
+app.use("/employee", Employee)
+app.use("/ticket", Ticket)
 
 
 

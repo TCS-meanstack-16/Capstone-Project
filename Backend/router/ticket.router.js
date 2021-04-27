@@ -7,4 +7,4 @@ router.delete("/resolveTicketById/:tid",TicketController.resolveTicketById)
 router.post("/createTicket",TicketController.createTicket);
 router.get("/showTickets",TicketController.showTickets);
 
-module.exports=ticket;
+module.exports=router;

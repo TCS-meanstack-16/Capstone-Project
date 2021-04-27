@@ -7,7 +7,7 @@ router.get("/allOrderDetails",OrderController.getOrderDetails);
 router.get("/retrieveOrderById/:pid",OrderController.getOrderById)
 router.post("/storeOrderDetails",OrderController.storeOrderDetails);
 router.delete("/deleteOrderById/:pid",OrderController.deleteOrderById);
-router.put("/updateOrderPrice",OrderController.updateOrderStatus);
+router.put("/updateOrderStatus",OrderController.updateOrderStatus);
 
 
 module.exports=router;

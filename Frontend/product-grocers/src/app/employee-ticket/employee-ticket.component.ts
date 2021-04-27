@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { TicketService } from '../services/ticket.service';
-import { Observable } from 'rxjs';
-import { Ticket } from '../models/ticket.model';
 
 @Component({
   selector: 'app-employee-ticket',
@@ -10,16 +8,18 @@ import { Ticket } from '../models/ticket.model';
 })
 export class EmployeeTicketComponent implements OnInit {
 
+  tickets:any;
+
   constructor(public ticketSer:TicketService) { }
 
   ngOnInit(): void {
   }
 
-  unlockAccount(ticketID:any){
+  unlockAccount(ticketID: any) {
     this.ticketSer.resolveTicket(ticketID);
   }
 
-  showTicket():Observable<Ticket[]>{
-    return this.ticketSer.getTickets();
+  showTicket() {
+    this.tickets = this.ticketSer.getTickets();
   }
 }

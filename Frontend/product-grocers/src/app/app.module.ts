@@ -19,7 +19,10 @@ import { ProfileInfoComponent } from './profile-info/profile-info.component';
 import { SendRequestComponent } from './send-request/send-request.component';
 import { UpdateOrderComponent } from './update-order/update-order.component';
 import { ViewTicketsComponent } from './view-tickets/view-tickets.component';
-import { TestAddProductComponent } from './test-add-product/test-add-product.component';
+import { UpdateProductComponent } from './product-components/update-product/update-product.component';
+import { DeleteProductComponent } from './product-components/delete-product/delete-product.component';
+import { AddProductComponent } from './product-components/add-product/add-product.component';
+import { RetrieveProductsComponent } from './product-components/retrieve-products/retrieve-products.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +41,10 @@ import { TestAddProductComponent } from './test-add-product/test-add-product.com
     SendRequestComponent,
     UpdateOrderComponent,
     ViewTicketsComponent,
-    TestAddProductComponent
+    UpdateProductComponent,
+    DeleteProductComponent,
+    AddProductComponent,
+    RetrieveProductsComponent
   ],
   imports: [
     BrowserModule,

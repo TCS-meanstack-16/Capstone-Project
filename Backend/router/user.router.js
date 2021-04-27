@@ -7,7 +7,7 @@ router.get("/allUserDetails",UserController.getUserDetails);
 router.get("/retrieveUserById/:pid",UserController.getUserById)
 router.post("/storeUserDetails",UserController.storeUserDetails);
 router.delete("/deleteUserById/:pid",UserController.deleteUserById);
-router.put("/updateUserPrice",UserController.updateUserFirstName);
+router.put("/updateUserFundsById",UserController.updateUserFundsById);
 
 
 module.exports=router;

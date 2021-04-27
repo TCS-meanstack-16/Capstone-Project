@@ -27,7 +27,6 @@ let getUserById = (req, res) => {
 let storeUserDetails = (req, res) => {
 
     let user = new UserModel({
-        _id: req.body.pid,
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         emailId: req.body.emailId,
@@ -88,4 +87,22 @@ let unlockUser = (req, res) => {
     user.userLocked = false;
 }
 
-module.exports = { getUserDetails, getUserById, storeUserDetails, deleteUserById, updateUserFirstName, unlockUser }
+let updateUserFundsById = (req, res) => {
+    let userId = req.body.userId;
+    console.log("getting " + userId)
+    let funds = req.body.total;
+    UserModel.updateOne({ _id: userId }, {$inc:{funds: funds}}, (err, result) => {
+        if (!err) {
+            if (result.nModified > 0) {
+                res.send("Record updated succesfully")
+            } else {
+                res.send("Record is not available");
+            }
+        } else {
+            res.send("Error generated " + err);
+        }
+    })
+
+}
+
+module.exports = { getUserDetails, getUserById, storeUserDetails, deleteUserById, updateUserFirstName, unlockUser, updateUserFundsById }
