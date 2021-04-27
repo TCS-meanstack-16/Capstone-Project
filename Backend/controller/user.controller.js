@@ -67,7 +67,8 @@ let deleteUserById = (req, res) => {
 
 }
 let updateUser = (req, res) => {
-    let user = req.body.user
+    let user = req.body
+    
     UserModel.replaceOne(
         {_id : user._id},
         user,

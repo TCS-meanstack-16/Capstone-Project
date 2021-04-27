@@ -22,8 +22,6 @@ export class UpdateOrderComponent implements OnInit {
 
   ngOnInit(): void {
     this.ordService.retrieveAllOrderDetails().subscribe(result => this.orders = result);
-    this.updateUser()
-
   }
 
   //Updates order status and refunds total if cancelled (Still need to add reason to user order)
@@ -63,7 +61,8 @@ export class UpdateOrderComponent implements OnInit {
 
     //add order to the database
     //ex: this.ordService.storeOrderDetailsInfo(orderRef); the backend needs to be updated to handle adding products to order
-
+    this.ordService.storeOrderDetailsInfo(orderRef);
+    
     //this adds the order to the user and decreases funds
     this.usrService.userOrderPurchase({
       order: this.orders?.find(x => x._id === Number(orderRef.pid)) //gets order object
@@ -81,14 +80,13 @@ export class UpdateOrderComponent implements OnInit {
     }); 
   }*/
 
+  // example update user
+  /*
   updateUser() {
-    var user = 
-      { "_id": 2, "funds": 930, "userLocked": false, "firstName": "angel", "lastName": "valdez", "emailId": "miguel.valdez@tcs.com", "password": "password", "dob": { "$date": "2021-04-27T14:59:18.305Z" }, "phone": "111-111-1111", "address": "11th st","orders": [{ "_id": 1, "total": 43, "status": "cancelled", "products": [{ "name": "a thing" }], "reason": "a" }] }
-    console.log(user.funds)
-    this.usrService.updateUser(user).subscribe((result: string) => {
+    this.usrService.updateUser(userREf).subscribe((result: string) => {
     console.log(result)
   }); 
-  }
+  }*/
   
 
 }
