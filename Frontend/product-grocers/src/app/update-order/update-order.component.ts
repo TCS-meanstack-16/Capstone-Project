@@ -14,17 +14,7 @@ export class UpdateOrderComponent implements OnInit {
   orders?: Array<Order>
   userId = 0;
   total = 0;
-  user = {
-    firstName: "miguel",
-    lastName: "valdez",
-    emailId: "miguel.valdez@tcs.com",
-    password: "password",
-    dob: new Date(),
-    phone: "111-111-1111",
-    address: "11th st",
-    userId: "miguel"
-  }
-
+  
   //Use order and user services
   constructor(public ordService: OrderService, public usrService: UserService) { }
 
