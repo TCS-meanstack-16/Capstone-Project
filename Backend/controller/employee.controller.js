@@ -1,5 +1,6 @@
-
 let EmployeeModel = require("../model/employee.model.js");
+let RequestModel = require("../model/request.model");
+let ProductModel = require("../model/product.model")
 
 //Retrieve all order details 
 let getEmployeeDetails =(req,res)=> {
@@ -34,7 +35,6 @@ let createEmployee = (req,res)=> {
     employee.save((err,result)=> {
         if(!err){
             res.send("Employee Created Successfully ")
-            //res.json({"msg":"Record stored successfully"})
         }else {
             res.send("Error Creating Employee ");
         }
@@ -83,4 +83,63 @@ let changePassword = (req,res) => {
     })
 }
 
-module.exports={getEmployeeDetails,getEmployeeById,createEmployee,deleteEmployeeById,changePassword}
+let createRequest = (req,res) => {
+    let request = new RequestModel({
+        product_id: req.body.product_id,
+        price: req.body.price,
+        quantity: req.body.number
+    });
+
+    request.save((err,result)=> {
+        if(!err){
+            res.send("Request Created Successfully ")
+        }else {
+            res.send("Error Creating Request ");
+        }
+    })
+}
+
+let getRequests = async (req,res) => {
+    try {
+        const requests = await RequestModel.find()
+            .sort({ createdAt: -1 });
+        res.send(requests);
+    } catch (err) {
+        res.send("Error generated "+err);
+    }
+}
+
+let resolveRequest = (req,res) => {
+    let pid = req.params.pid;
+    RequestModel.findOne({product_id:pid},(err, request) => {
+        let newPrice = request.price;
+        let newAmount = req.quantity;
+        
+        ProductModel.updateMany(
+            { _id: pid }, 
+            { $set: 
+                {  
+                    price: newPrice
+                }
+            })
+        
+        deleteRequest(req,res);
+    });
+}
+
+let deleteRequest = (req,res) => {
+    let pid = req.params.pid;
+    RequestModel.deleteOne({ product_id: pid }, (err, result) => {
+        if (!err) {
+            if (result.deletedCount > 0) {
+                res.send("Request deleted successfully")
+            } else {
+                res.send("Request not present");
+            }
+        } else {
+            res.send("Error generated " + err);
+        }
+    })
+}
+
+module.exports={getEmployeeDetails,getEmployeeById,createEmployee,deleteEmployeeById,changePassword,createRequest,getRequests,resolveRequest,deleteRequest}
