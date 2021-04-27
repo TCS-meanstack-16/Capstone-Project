@@ -123,18 +123,23 @@ let resolveRequest = (req,res) => {
                 }
             })
         
-        RequestModel.deleteOne({ product_id: pid }, (err, result) => {
-            if (!err) {
-                if (result.deletedCount > 0) {
-                    res.send("Request deleted successfully")
-                } else {
-                    res.send("Request not present");
-                }
-            } else {
-                res.send("Error generated " + err);
-            }
-        })
+        deleteRequest(req,res);
     });
 }
 
-module.exports={getEmployeeDetails,getEmployeeById,createEmployee,deleteEmployeeById,changePassword,createRequest,getRequests,resolveRequest}
+let deleteRequest = (req,res) => {
+    let pid = req.params.pid;
+    RequestModel.deleteOne({ product_id: pid }, (err, result) => {
+        if (!err) {
+            if (result.deletedCount > 0) {
+                res.send("Request deleted successfully")
+            } else {
+                res.send("Request not present");
+            }
+        } else {
+            res.send("Error generated " + err);
+        }
+    })
+}
+
+module.exports={getEmployeeDetails,getEmployeeById,createEmployee,deleteEmployeeById,changePassword,createRequest,getRequests,resolveRequest,deleteRequest}
