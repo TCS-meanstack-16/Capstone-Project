@@ -34,4 +34,9 @@ export class UserService {
   userOrderPurchase(userRef: any): any {
     return this.http.put("http://localhost:9090/user/userOrderPurchase", userRef, { responseType: 'text' })
   }
+
+  unlockUser(userRef: any): any {
+    return this.http.put("http://localhost:9090/user/unlockUser", userRef, { responseType: 'text' })
+  }
+
 }

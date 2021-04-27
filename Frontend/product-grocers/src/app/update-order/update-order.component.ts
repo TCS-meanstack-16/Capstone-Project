@@ -37,7 +37,6 @@ export class UpdateOrderComponent implements OnInit {
       this.total = Number(this.orders?.find(x => x._id === Number(orderRef.pid))?.total)
       this.orderId = Number(this.orders?.find(x => x._id === Number(orderRef.pid))?._id)
       
-      
       //We increment the funds by passing the userId and total to the backend where the total is added to the user's funds
       
       this.usrService.updateUserFundsById({
@@ -59,6 +58,7 @@ export class UpdateOrderComponent implements OnInit {
     
   }
 
+  //example for cart page
   purchasOrder(orderRef:any){
 
     //add order to the database
@@ -72,6 +72,16 @@ export class UpdateOrderComponent implements OnInit {
     });
 
   }
+
+  //example unlock user
+  /*
+  unlockUser(){
+    this.usrService.unlockUser({userId: userRef.userId, userLocked: userRef.userLocked}).subscribe((result: string) => {
+      console.log(result)
+    }); 
+  }*/
+
+  
   
 
 }
