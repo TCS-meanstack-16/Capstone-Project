@@ -4,14 +4,13 @@ let userController = require("./user.controller.js");
 //Retrieve all order details 
 
 let resolveTicketById = (req,res)=> {
-    console.log("In resolve ticket");
     let tid = req.params.tid;       //passing id through path param 
     
     TicketModel.find({_id:tid},(err,ticket)=> {
         if(!err){
             let user = ticket.userID;
-            userController.unlockUser(user);
-            ticket.deleteTicketById(ticket._id);
+            //userController.unlockUser(user);
+            deleteTicketById(req,res,tid);
         }
     })
 }
@@ -33,7 +32,6 @@ let createTicket = (req,res)=> {
     ticket.save((err,result)=> {
         if(!err){
             res.send("Ticket Created Successfully ")
-            //res.json({"msg":"Record stored successfully"})
         }else {
             res.send(err);
         }
@@ -41,10 +39,8 @@ let createTicket = (req,res)=> {
 
 }
 
-let deleteTicketById = (id) => {
-    console.log("In delete ticket");
-    console.log(id);
-    EmployeeModel.deleteOne({_id:id},(err,result)=> {
+let deleteTicketById = (req,res,id) => {
+    TicketModel.deleteOne({_id:id},(err,result)=> {
         if(!err){
                 if(result.deletedCount>0){
                     res.send("Ticket deleted successfully")
@@ -60,7 +56,7 @@ let deleteTicketById = (id) => {
 
 let showTickets = async (req, res) => {
     try {
-        const tickets = await Post.find()
+        const tickets = await TicketModel.find()
             .sort({ createdAt: -1 });
         res.send(tickets);
     } catch (err) {

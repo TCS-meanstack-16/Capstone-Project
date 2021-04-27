@@ -13,12 +13,11 @@ let getEmployeeDetails =(req,res)=> {
 }
 
 let getEmployeeById = (req,res)=> {
-    
     let eid = req.params.eid;       //passing id through path param 
-    
-    EmployeeModel.find({_id:eid},(err,data)=> {
+
+    EmployeeModel.find({_id:eid},(err,employee)=> {
         if(!err){
-            res.json(data);
+            res.json(employee);
         }
     })
 }
@@ -44,7 +43,9 @@ let createEmployee = (req,res)=> {
 }
 
 let deleteEmployeeById= (req,res)=> {
+    console.log("In delete employee");
     let eid = req.params.eid;
+    console.log(eid);
     EmployeeModel.deleteOne({_id:eid},(err,result)=> {
         if(!err){
                 if(result.deletedCount>0){
@@ -60,9 +61,26 @@ let deleteEmployeeById= (req,res)=> {
 }
 
 let changePassword = (req,res) => {
-    let eid = req.params.eid;
-    let employee = EmployeeModel.find({_id:eid});
-    employee.password = req.params.password;
+    let eid = req.body._id;
+
+    EmployeeModel.updateOne(
+        { _id: eid }, 
+        { $set: 
+            {  
+                password: req.body.password
+            }
+        }, 
+    (err, result) => {
+        if (!err) {
+            if (result.nModified > 0) {
+                res.send("Record updated succesfully")
+            } else {
+                res.send("Record is not available");
+            }
+        } else {
+            res.send("Error generated " + err);
+        }
+    })
 }
 
 module.exports={getEmployeeDetails,getEmployeeById,createEmployee,deleteEmployeeById,changePassword}
