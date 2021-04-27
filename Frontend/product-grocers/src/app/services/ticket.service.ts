@@ -19,6 +19,7 @@ export class TicketService {
 
   //by default all HttpClient method return type is observable with json format data. 
   resolveTicket(id:any):any{
-    return this.http.delete("http://localhost:9090/ticket/resolveTicketById/"+id,{responseType:'text'});
+    return this.http.delete("http://localhost:9090/ticket/resolveTicketById/"+id,{responseType:'text'})
+      .subscribe(result=>console.log(result),error=>console.log(error));
   }
 }
