@@ -84,27 +84,84 @@ let updateUserFirstName = (req, res) => {
 
 }
 
+/*
 let unlockUser = (req, res) => {
     let user = getUserById(req.body.pid);
     user.userLocked = false;
+}*/
+
+let unlockUser= (req,res)=> {
+    let userId = req.body.userId;
+    let userLocked = !req.body.userLocked;
+    console.log(userLocked)
+    UserModel.updateMany({_id:userId},{$set:{userLocked: userLocked}},(err,result)=> {
+        if(!err){
+            if(result.nModified>0){
+                    res.send("Record updated succesfully")
+            }else {
+                    res.send("Record is not available");
+            }
+        }else {
+            res.send("Error generated "+err);
+        }
+    })
+
 }
 
 let updateUserFundsById = (req, res) => {
     let userId = req.body.userId;
     let funds = req.body.total;
-    UserModel.updateOne({ _id: userId }, {$inc:{funds: funds}}, (err, result) => {
-        if (!err) {
-            if (result.nModified > 0) {
-                res.send("Record updated succesfully")
-            } else {
-                res.send("Record is not available");
+    let orderId = req.body.orderId;
+    let reason = req.body.reason;
+    UserModel.update({ _id: userId },
+        {
+            $inc: { funds: funds },
+            $set: {
+                "orders.$[outer].reason": reason
             }
-        } else {
-            res.send("Error generated " + err);
-        }
-    })
-    
-
+        },
+        {
+            new: true,
+            "arrayFilters": [{ "outer._id": orderId }]
+        }, (err, result) => {
+            if (!err) {
+                if (result.nModified > 0) {
+                    res.send("Record updated succesfully")
+                } else {
+                    res.send("Record is not available");
+                }
+            } else {
+                res.send("Error generated " + err);
+            }
+        })
 }
 
-module.exports = { getUserDetails, getUserById, storeUserDetails, deleteUserById, updateUserFirstName, unlockUser, updateUserFundsById }
+let userOrderPurchase = (req, res) => {
+    let order = req.body.order;
+    
+    UserModel.update({ _id: order.userId },
+        {
+            $inc: { funds: -order.total },
+            $push:
+            {
+                "orders": order
+            }
+            , upsert: true
+        },
+        {
+            new: true,
+            "arrayFilters": [{ "outer._id": order._id }]
+        }, (err, result) => {
+            if (!err) {
+                if (result.nModified > 0) {
+                    res.send("Record updated succesfully")
+                } else {
+                    res.send("Record is not available");
+                }
+            } else {
+                res.send("Error generated " + err);
+            }
+        })
+}
+
+module.exports = { getUserDetails, getUserById, storeUserDetails, deleteUserById, updateUserFirstName, unlockUser, updateUserFundsById, userOrderPurchase }

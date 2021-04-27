@@ -8,6 +8,8 @@ router.get("/retrieveUserById/:pid",UserController.getUserById)
 router.post("/storeUserDetails",UserController.storeUserDetails);
 router.delete("/deleteUserById/:pid",UserController.deleteUserById);
 router.put("/updateUserFundsById",UserController.updateUserFundsById);
+router.put("/userOrderPurchase",UserController.userOrderPurchase);
+router.put("/unlockUser",UserController.unlockUser);
 
 
 module.exports=router;
