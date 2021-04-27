@@ -1,12 +1,38 @@
 <div>
   <h2>Angular Project - Grocers</h2>
   <hr/>
+  <a class="button" routerLink="/sign-up">Sign Up</a>
+  <br>
 
-  <app-add-product></app-add-product>
-  <hr/>
-  <app-update-product></app-update-product>
-  <app-delete-product></app-delete-product>
-  <app-retrieve-products></app-retrieve-products>
-  <app-update-order></app-update-order>
-  <app-sign-up></app-sign-up>
+
+  Admin
+  <br>
+  <a class="button" routerLink="/add-product">Add Product</a> |
+  <a class="button" routerLink="/delete-product">Delete Product</a> |
+  <a class="button" routerLink="/update-product">Update Product</a> |
+  <a class="button" routerLink="/retrieve-products">Retrieve Products</a> |
+  <a class="button" routerLink="/view-requests">View Requests</a> |
+  <a class="button" routerLink="/add-employee">Add Employee</a> |
+  <a class="button" routerLink="/delete-employee">Delete Employee</a> |
+  <a class="button" routerLink="/generate-reports">Generate Reports</a> |
+  <hr>
+
+  User
+  <br>
+  <a class="button" routerLink="/cart">Cart</a> |
+  <a class="button" routerLink="/orders">Order Status</a> |
+  <a class="button" routerLink="/profile-info">Edit Profile</a> |
+  <a class="button" routerLink="/add-funds">Add funds</a> |
+  <hr>
+  
+  Employee
+  <br>
+  <a class="button" routerLink="/send-requests">Send Request</a> |
+  <a class="button" routerLink="/update-order">Update Order</a>|
+  <a class="button" routerLink="/employee-ticket">Unlock Users</a> |
+  <a class="button" routerLink="/edit-employees">Edit Profile</a> |
+ 
+  <router-outlet></router-outlet>
+
+
 </div>

@@ -33,4 +33,19 @@ export class UserService {
   updateUserFundsById(userRef: any): any {
     return this.http.put("http://localhost:9090/user/updateUserFundsById", userRef, { responseType: 'text' })
   }
+
+  userOrderPurchase(userRef: any): any {
+    return this.http.put("http://localhost:9090/user/userOrderPurchase", userRef, { responseType: 'text' })
+  }
+
+  unlockUser(userRef: any): any {
+    return this.http.put("http://localhost:9090/user/unlockUser", userRef, { responseType: 'text' })
+  }
+
+  updateUser(userRef: any): any {
+    return this.http.put("http://localhost:9090/user/updateUser", userRef, { responseType: 'text' })
+  }
+
+
+  
 }
