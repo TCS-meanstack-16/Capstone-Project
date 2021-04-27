@@ -60,10 +60,18 @@ let deleteProductById = (req, res) => {
 
 }
 
-let updateProductPrice = (req, res) => {
+//Have previous values as default in form
+let updateProduct = (req, res) => { 
     let pid = req.body.pid;
-    let updatedPrice = req.body.price;
-    ProductModel.updateMany({ _id: pid }, { $set: { price: updatedPrice } }, (err, result) => {
+    ProductModel.updateMany(
+        { _id: pid }, 
+        { $set: 
+            {   name: req.body.name,
+                price: req.body.price,
+                quantity: req.body.quantity 
+            }
+        }, 
+    (err, result) => {
         if (!err) {
             if (result.nModified > 0) {
                 res.send("Record updated succesfully")
@@ -77,4 +85,4 @@ let updateProductPrice = (req, res) => {
 
 }
 
-module.exports = { getProductDetails, getProductById, storeProductDetails, deleteProductById, updateProductPrice }
+module.exports = { getProductDetails, getProductById, storeProductDetails, deleteProductById, updateProduct }
