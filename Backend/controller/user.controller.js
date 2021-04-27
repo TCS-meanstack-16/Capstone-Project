@@ -110,20 +110,9 @@ let unlockUser = (req, res) => {
     user.userLocked = false;
 }*/
 
-let unlockUser= (req,res)=> {
-    let userId = req.body.userId;
-    let userLocked = !req.body.userLocked;
-    console.log(userLocked)
-    UserModel.updateMany({_id:userId},{$set:{userLocked: userLocked}},(err,result)=> {
-        if(!err){
-            if(result.nModified>0){
-                    res.send("Record updated succesfully")
-            }else {
-                    res.send("Record is not available");
-            }
-        }else {
-            res.send("Error generated "+err);
-        }
+let unlockUser= (id)=> {
+    let userLocked = false;
+    UserModel.updateOne({_id:id},{$set:{userLocked: userLocked}},(err,result)=> {
     })
 
 }

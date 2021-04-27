@@ -5,11 +5,13 @@ let userController = require("./user.controller.js");
 
 let resolveTicketById = (req,res)=> {
     let tid = req.params.tid;       //passing id through path param 
+    console.log(tid);
     
-    TicketModel.find({_id:tid},(err,ticket)=> {
+    TicketModel.findOne({_id:tid},(err,ticket)=> {
         if(!err){
+            console.log(ticket);
             let user = ticket.userID;
-            //userController.unlockUser(user);
+            userController.unlockUser(user);
             deleteTicketById(req,res,tid);
         }
     })
@@ -23,11 +25,6 @@ let createTicket = (req,res)=> {
         name: req.body.name,
         reason: req.body.reason
     });
-
-    console.log(ticket._id);
-    console.log(ticket.userID);
-    console.log(ticket.name);
-    console.log(ticket.reason);
 
     ticket.save((err,result)=> {
         if(!err){

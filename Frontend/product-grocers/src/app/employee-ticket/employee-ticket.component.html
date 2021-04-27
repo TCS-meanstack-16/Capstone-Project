@@ -21,7 +21,7 @@
             <td>{{ticket.name}}</td>
             <td>{{ticket.userID}}</td>
             <td>{{ticket.reason}}</td>
-            <td><a [href]=ticket.link>Unlock Account</a></td>
+            <td><button (click)="unlockAccount(ticket._id)"></button></td>
         </tr>
         
     </table>
