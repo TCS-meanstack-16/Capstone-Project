@@ -15,12 +15,15 @@
             <th>Reason For Lockout</th>
             <th>Unlock Account</th>
         </tr>
+        
         <tr *ngFor = "let ticket of tickets">
             <td>{{ticket._id}}</td>
             <td>{{ticket.name}}</td>
             <td>{{ticket.userID}}</td>
             <td>{{ticket.reason}}</td>
+            <td><a [href]=ticket.link>Unlock Account</a></td>
         </tr>
+        
     </table>
 </body>
 </html>
