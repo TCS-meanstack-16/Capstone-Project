@@ -37,15 +37,15 @@ let storeUserDetails = (req, res) => {
         city: req.body.city,
         state: req.body.state,
         pincode: req.body.pincode,
-        //userId: req.body.userId,
+        userId: req.body.userId,
     });
-
+    console.log(user)
     user.save((err, result) => {
         if (!err) {
             res.send("Record stored successfully ")
             //res.json({"msg":"Record stored successfully"})
         } else {
-            res.send("Record didn't store ");
+            res.send(err);
         }
     })
 
