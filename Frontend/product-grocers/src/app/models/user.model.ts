@@ -1,13 +1,16 @@
 export class User {
     constructor(
-        _id: Number,
+        public _id: Number,
         public firstName: string,
         public lastName: string,
         public emailId: string,
-        password: string,
+        public password: string,
         public dob: Date,
         public phone: string,
         public address: string,
+        public city: string,
+        public state: string,
+        public pincode: number,
         public funds: number,
         public orders: Array<any>,
         public userLocked: Boolean, 
