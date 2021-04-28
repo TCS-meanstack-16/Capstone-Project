@@ -30,7 +30,6 @@ import { RetrieveProductsComponent } from './product-components/retrieve-product
   declarations: [
     AppComponent,
     ExampleCompComponent,
-    //EmployeeTicketComponent,
     LoginPageComponent,
     RaiseTicketComponent,
     EditProjectsComponent,
@@ -59,7 +58,6 @@ import { RetrieveProductsComponent } from './product-components/retrieve-product
       {path: 'update-product', component: UpdateProductComponent},
       {path: 'sign-up', component: SignUpComponent},
       {path: 'view-tickets', component: ViewTicketsComponent},
-      {path: 'employee-ticket', component: EmployeeTicketComponent},
       {path: 'raise-ticket', component: RaiseTicketComponent},
       {path: 'view-requests', component: ViewRequestsComponent},
       {path: 'send-requests', component: SendRequestComponent},
