@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { ExampleCompComponent } from './example-comp/example-comp.component';
 import { FormsModule }   from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
-//import { EmployeeTicketComponent } from './employee-ticket/employee-ticket.component';
+import { EmployeeTicketComponent } from './employee-ticket/employee-ticket.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { RaiseTicketComponent } from './raise-ticket/raise-ticket.component';
 import { EditProjectsComponent } from './edit-projects/edit-projects.component';
@@ -23,6 +23,7 @@ import { UpdateProductComponent } from './product-components/update-product/upda
 import { DeleteProductComponent } from './product-components/delete-product/delete-product.component';
 import { AddProductComponent } from './product-components/add-product/add-product.component';
 import { RetrieveProductsComponent } from './product-components/retrieve-products/retrieve-products.component';
+import { GenerateReportsComponent } from './generate-reports/generate-reports.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { NavComponent } from './shared/nav/nav.component';
@@ -34,6 +35,7 @@ import { ProductItemComponent } from './cart/product-list/product-item/product-i
 import { EmployeeTicketComponent } from './employee-ticket/employee-ticket.component';
 import { AddEmployeeComponent } from './add-employee/add-employee.component';
 import { DeleteEmployeeComponent } from './delete-employee/delete-employee.component';
+
 
 
 @NgModule({
@@ -57,6 +59,7 @@ import { DeleteEmployeeComponent } from './delete-employee/delete-employee.compo
     DeleteProductComponent,
     AddProductComponent,
     RetrieveProductsComponent,
+    GenerateReportsComponent,
     AddEmployeeComponent,
     DeleteEmployeeComponent,
     HeaderComponent,
@@ -67,6 +70,7 @@ import { DeleteEmployeeComponent } from './delete-employee/delete-employee.compo
     CartItemComponent,
     ProductListComponent,
     ProductItemComponent,
+
 
   ],
   imports: [
