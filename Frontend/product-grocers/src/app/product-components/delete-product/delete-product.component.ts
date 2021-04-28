@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Product } from 'src/app/models/product.model';
 import { ProductService } from '../../services/product.service';
 
 @Component({
@@ -8,9 +9,12 @@ import { ProductService } from '../../services/product.service';
 })
 export class DeleteProductComponent implements OnInit {
   deleteMsg?:string;
+  products?:Array<Product>
+
   constructor(public proService:ProductService) { }
 
   ngOnInit(): void {
+    this.proService.retrieveAllProductDetails().subscribe(result=>this.products=result);
   }
   
   deleteById(id:any){

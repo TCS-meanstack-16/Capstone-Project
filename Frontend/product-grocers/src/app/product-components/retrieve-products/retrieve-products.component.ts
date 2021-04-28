@@ -13,7 +13,9 @@ export class RetrieveProductsComponent implements OnInit {
   constructor(public proService:ProductService) { }
 
   ngOnInit(): void {
+    this.proService.retrieveAllProductDetails().subscribe(result=>console.log("result"));
     this.proService.retrieveAllProductDetails().subscribe(result=>this.products=result);
+    
   }
-
+  
 }

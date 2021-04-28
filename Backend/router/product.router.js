@@ -8,6 +8,8 @@ router.get("/retrieveProductById/:pid",ProductController.getProductById)
 router.post("/storeProductDetails",ProductController.storeProductDetails);
 router.delete("/deleteProductById/:pid",ProductController.deleteProductById);
 router.put("/updateProduct",ProductController.updateProduct);
+router.put("/reduceQuantity",ProductController.reduceQuantity);
+
 
 
 module.exports=router;

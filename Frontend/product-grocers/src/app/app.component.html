@@ -1,8 +1,9 @@
-<div>
-  <h2>Angular Project - Grocers</h2>
+<app-nav></app-nav>
+<div class="container">
+  <!-- <h2>Angular Project - Grocers</h2>
   <hr/>
   <a class="button" routerLink="/sign-up">Sign Up</a>
-  <br>
+  <br> -->
 
 
   Admin
@@ -32,7 +33,19 @@
   <a class="button" routerLink="/employee-ticket">Unlock Users</a> |
   <a class="button" routerLink="/edit-employees">Edit Profile</a> |
  
-  <router-outlet></router-outlet>
+  <div class="row">
+    <router-outlet></router-outlet>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <app-cart></app-cart>
+    </div>
+  </div>
+  
 
 
 </div>
+<footer>
+  <app-footer></app-footer>
+</footer>

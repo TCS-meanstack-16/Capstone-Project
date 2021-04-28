@@ -7,7 +7,7 @@ let EmployeeSchema = mongoose.Schema({
     _id: Number,
     name: String,
     email: String,
-    password: String,
+    password: {type: String, default:"employeepass"},
     isAdmin: {type: Boolean, default:false}
 })
 

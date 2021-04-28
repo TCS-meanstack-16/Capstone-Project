@@ -1,1 +1,22 @@
-<p>profile-info works!</p>
+<div>
+    <h2>Edit Profile</h2>
+    <form #userRef="ngForm" (ngSubmit)="updateUser(userRef.value)">
+        <label>User ID</label>
+        <input [disabled]="true" [(ngModel)]="user._id" type="text" name="_id" ngModel /><br/>
+        <label>Password</label>
+        <input [(ngModel)]="user._id" type="password" name="password" ngModel/><br/>
+        <label>Address</label>
+        <input [(ngModel)]="user.address" type="text" name="address" ngModel/><br/>
+        <label>State</label>
+        <input [(ngModel)]="user.state" type="text" name="state" ngModel/><br/>
+        <label>City</label>
+        <input [(ngModel)]="user.city" type="text" name="city" ngModel/><br/>
+        <label>Pincode</label>
+        <input [(ngModel)]="user.pincode" type="text" name="pincode" ngModel/><br/>
+        <label>Phone</label>
+        <input [(ngModel)]="user.phone" type="text" name="phone" ngModel/><br/>
+        <label>Email</label>
+        <input [(ngModel)]="user.emailId" type="text" name="emailId" ngModel/><br/>
+        <input type="submit" value="Edit Profile"/>
+    </form>
+</div>
