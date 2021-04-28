@@ -37,7 +37,8 @@ let storeOrderDetails = (req,res)=> {
             res.send("Record stored successfully ")
             //res.json({"msg":"Record stored successfully"})
         }else {
-            res.send("Record didn't store ");
+            res.send(err);
+            //res.send("Record didn't store ");
         }
     })
 

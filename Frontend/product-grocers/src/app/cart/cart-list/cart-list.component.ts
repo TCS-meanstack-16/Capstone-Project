@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Order } from 'src/app/models/order';
 import { Products } from 'src/app/models/product';
 import { MessengerService } from 'src/app/services/messenger.service';
+import { OrderService } from 'src/app/services/order.service';
 
 @Component({
   selector: 'app-cart-list',
@@ -9,6 +11,8 @@ import { MessengerService } from 'src/app/services/messenger.service';
 })
 
 export class CartListComponent implements OnInit {
+
+  ordr = {};
 
   cartItems = [
     // {id: 1, productId: 1, productName: "test1", qty: 4, price:100},
@@ -23,13 +27,25 @@ export class CartListComponent implements OnInit {
 
   cartTotal = 0;
 
-  constructor(private msgSrvc: MessengerService) { }
+  constructor(private msgSrvc: MessengerService,
+    public ordrSrvc: OrderService) { }
 
   ngOnInit(): void {
+    //check if session exists
+    // if(sessionStorage.getItem('user1') != null ){
+    //   var jsonString = sessionStorage.getItem('user');
+    //   var jsonObject = JSON.parse(jsonString);
+    //   this.cartItems = jsonObject['products'];
+    //   console.log(this.cartItems);
+    // }
     //reading from the observable
     this.msgSrvc.getMsg().subscribe((product: Products) =>{ //BUG: product is of type unknown and is not getting typecasted to Class type Product
       this.addProductToCart(product);
-    },error=>console.log(error)); 
+    },error=>console.log(error));
+
+    // this.msgSrvc.getDelMsg().subscribe((product: Products)=>{
+    //   this.removeProductFromCart(product);
+    // });
   }
 
   addProductToCart(product: Products){
@@ -41,7 +57,8 @@ export class CartListComponent implements OnInit {
     //iterate to check if product exists
     for(let i in this.cartItems){
       //if exists, increment quantity
-      if(this.cartItems[i].productId === product.id){
+      if(this.cartItems[i].productId === product._id){
+        console.log(i);
         this.cartItems[i].qty+=1;
         prodExists = true;
         break;
@@ -52,30 +69,6 @@ export class CartListComponent implements OnInit {
     if(!prodExists){
       this.pushToCart(product);
     }
-    
-    // //check if current cart is empty
-    // //Yes: then push values
-    // if(this.cartItems.length === 0){
-    //   this.pushToCart(product);
-    // }
-    // //No:
-    // else{
-    //   //iterate through items
-    //   for(let i in this.cartItems){
-    //     //if item already present, increment quantity
-    //     if(this.cartItems[i].productId === product.id){
-    //       this.cartItems[i].qty+=1;
-    //     }
-    //   }
-
-    //     //else push new item to cart
-    //     else{
-    //       this.pushToCart(product);
-    //     }
-    // }
-
-    
-    
 
     this.cartTotal = 0;
     this.cartItems.forEach(item=>{
@@ -83,13 +76,62 @@ export class CartListComponent implements OnInit {
     });
   }
 
+  // removeProductFromCart(product: Products){
+  //   //initialize product exists
+  //   let prodExists = true;
+
+  //   //iterate to check if product exists
+  //   for(let i in this.cartItems){
+  //     //if exists, increment quantity
+  //     if(this.cartItems[i].productId === product._id){
+  //       if(this.cartItems[i].qty>1){
+  //         this.cartItems[i].qty-=1;
+  //         break;
+  //       }
+  //       else{
+  //         prodExists = false;
+  //         this.cartItems.splice(Number(i),1);
+  //       }
+        
+  //     }
+  //   }
+  // }
+
   pushToCart(product: Products){
     this.cartItems.push({
       //id: product.id,
-      productId: product.id,
+      productId: product._id,
       productName: product.name,
       qty: 1,
       price: product.price
     });
+  }
+
+  checkout(){
+    //sessionStorage.setItem('user',this.cartItems);
+    //var cartItemsJsonString = JSON.stringify(this.cartItems);
+    //console.log(cartItemsJsonString);
+    //sessionStorage.setItem('user', cartItemsJsonString);
+    //console.log(sessionStorage.getItem('user'));
+    // this.ordr.push({
+    //  total: this.cartTotal,
+    //  userId: 'user1',
+    //  products: this.cartItems,
+    //  //products: JSON.parse(sessionStorage.getItem('user')),
+    //  status: 'paid'
+    // });
+    //console.log(this.ordr);
+
+    this.ordr['total'] = this.cartTotal;
+    this.ordr['userId'] = 123;
+    this.ordr['products'] = this.cartItems;
+    this.ordr['status'] = 'paid'; 
+    console.log(this.ordr);
+    sessionStorage.setItem('user1',JSON.stringify(this.ordr));
+
+    //this.ordrSrvc.storeOrderDetailsInfo(this.ordr);
+    
+    
+    //console.log(this.cartItems);
   }
 }

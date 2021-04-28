@@ -10,22 +10,24 @@ import { Products } from '../models/product';
 })
 export class ProductService {
 
+  pro: Array<Product>;
+
   products: Products[] = [
-    new Products(1, 'Product 1', 'This is product 1 description. This is a nice product, please buy!', 100),
-    new Products(2, 'Product 2', 'This is product 2 description. This is a nice product, please buy!', 200),
-    new Products(3, 'Product 3', 'This is product 3 description. This is a nice product, please buy!', 300),
-    new Products(4, 'Product 4', 'This is product 4 description. This is a nice product, please buy!', 400),
-    new Products(5, 'Product 5', 'This is product 5 description. This is a nice product, please buy!', 500),
-    new Products(6, 'Product 6', 'This is product 6 description. This is a nice product, please buy!', 600),
-    new Products(7, 'Product 7', 'This is product 7 description. This is a nice product, please buy!', 700),
+    // new Products(1, 'Product 1', 'This is product 1 description. This is a nice product, please buy!', 100),
+    // new Products(2, 'Product 2', 'This is product 2 description. This is a nice product, please buy!', 200),
+    // new Products(3, 'Product 3', 'This is product 3 description. This is a nice product, please buy!', 300),
+    // new Products(4, 'Product 4', 'This is product 4 description. This is a nice product, please buy!', 400),
+    // new Products(5, 'Product 5', 'This is product 5 description. This is a nice product, please buy!', 500),
+    // new Products(6, 'Product 6', 'This is product 6 description. This is a nice product, please buy!', 600),
+    // new Products(7, 'Product 7', 'This is product 7 description. This is a nice product, please buy!', 700),
 
   ];
   constructor(public http: HttpClient) { }
 
-  getProducts(): Products[] {
+  getProducts(): Observable<Products[]> {
     //TODO: populate product from an API
     //Also return observable
-    return this.products;
+    return this.http.get<Products[]>("http://localhost:9090/product/allProductDetails");
   }
 
   
@@ -35,6 +37,7 @@ export class ProductService {
       subscribe(result => console.log(result), error => console.log(error));
   }
   retrieveAllProductDetails(): Observable<Product[]> {
+    //this.pro = this.http.get<Product[]>("http://localhost:9090/product/allProductDetails");
     return this.http.get<Product[]>("http://localhost:9090/product/allProductDetails")
   }
 

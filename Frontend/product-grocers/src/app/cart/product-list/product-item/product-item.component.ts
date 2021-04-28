@@ -19,4 +19,8 @@ export class ProductItemComponent implements OnInit {
     this.msgSrvc.sendMsg(this.productItem);
   }
 
+  handleRemoveFromCart(){
+    //this.msgSrvc.sendDelMsg(this.productItem);
+  }
+
 }
