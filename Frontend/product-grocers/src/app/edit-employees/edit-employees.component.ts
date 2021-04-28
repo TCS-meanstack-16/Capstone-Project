@@ -7,22 +7,31 @@ import { EmployeeService } from '../services/employee.service';
   styleUrls: ['./edit-employees.component.css']
 })
 export class EditEmployeesComponent implements OnInit {
-
+  empId = 1
+  employee?:any
   constructor(public empSer:EmployeeService) { }
 
   ngOnInit(): void {
+    this.getEmployee(this.empId)
   }
 
-  createEmployee(empRef:any){
-    this.empSer.createEmployee(empRef);
+
+  
+
+  changePassword(employeeRef:any){
+    this.empSer.changePassword({_id: this.empId, password: employeeRef.password}).subscribe(result => {
+      console.log(result)
+    });
   }
 
   getEmployee(id:any){
-    return(this.empSer.getEmployee(id));
+    this.empSer.getEmployee(id).subscribe(result => {
+      console.log(result);
+      this.employee = result[0];
+    });
   }
+  
 
-  deleteEmployee(id:any){
-    this.empSer.deleteEmployee(id);
-  }
+  
 
 }
