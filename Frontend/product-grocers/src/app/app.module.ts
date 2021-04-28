@@ -33,6 +33,8 @@ import { CartItemComponent } from './cart/cart-list/cart-item/cart-item.componen
 import { ProductListComponent } from './cart/product-list/product-list.component';
 import { ProductItemComponent } from './cart/product-list/product-item/product-item.component';
 import { EmployeeTicketComponent } from './employee-ticket/employee-ticket.component';
+import { AddEmployeeComponent } from './add-employee/add-employee.component';
+import { DeleteEmployeeComponent } from './delete-employee/delete-employee.component';
 
 
 @NgModule({
@@ -56,6 +58,8 @@ import { EmployeeTicketComponent } from './employee-ticket/employee-ticket.compo
     DeleteProductComponent,
     AddProductComponent,
     RetrieveProductsComponent,
+    AddEmployeeComponent,
+    DeleteEmployeeComponent,
     HeaderComponent,
     FooterComponent,
     NavComponent,
@@ -64,6 +68,7 @@ import { EmployeeTicketComponent } from './employee-ticket/employee-ticket.compo
     CartItemComponent,
     ProductListComponent,
     ProductItemComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -84,7 +89,11 @@ import { EmployeeTicketComponent } from './employee-ticket/employee-ticket.compo
       {path: 'reports', component: ReportsComponent},
       {path: 'edit-employees', component: EditEmployeesComponent},
       {path: 'login-page', component: LoginPageComponent},
-      {path: 'update-order', component: UpdateOrderComponent}
+      {path: 'update-order', component: UpdateOrderComponent},
+      {path: 'add-employee', component: AddEmployeeComponent},
+      {path: 'delete-employee', component: DeleteEmployeeComponent}
+
+      
     ]),
     AppRoutingModule,
     FormsModule,

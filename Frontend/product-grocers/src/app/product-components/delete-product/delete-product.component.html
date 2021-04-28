@@ -1,7 +1,24 @@
 <div>
-    <h2>Delete Product by Id</h2>
-    Id :<input type="text" #idRef/><br/>
-    <input type="button" value="Delete By Id"
-    (click)="deleteById(idRef.value)"/><br/>
-    {{deleteMsg}}
+    <h2>Delete Product</h2>
+    <div>
+        <table border="1">
+                <tr>
+                    <th>PId</th>
+                    <th>ProductName</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Description</th>
+                    <th>Delete</th>
+                </tr>
+                <tr *ngFor="let pp of products">
+                        <td>{{pp._id}}</td>
+                        <td>{{pp.name}}</td>
+                        <td>{{pp.price}}</td>
+                        <td>{{pp.quantity}}</td>
+                        <td>{{pp.desc}}</td>
+                        <td><button (click)="deleteById(pp._id)">Delete Product</button></td>
+                </tr>
+    
+        </table>
+    </div>
 </div>
