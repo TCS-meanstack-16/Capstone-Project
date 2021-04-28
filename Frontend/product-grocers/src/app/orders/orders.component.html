@@ -1,1 +1,21 @@
-<p>orders works!</p>
+<div>
+    <h2>Your Orders</h2>
+    <table border="1">
+            <tr>
+                <th>Id</th>
+                <th>Products</th>
+                <th>Total</th>
+                <th>Status</th>
+                <th>Date</th>
+            </tr>
+            <tr *ngFor="let order of user.orders">
+                    <td>{{order._id}}</td>
+                    <td *ngFor="let product of order.products">{{product.name}} </td>
+                    <td>${{order.total}}</td>
+                    <td>{{order.status}}</td>
+                    <td>{{order.date | date: 'MM/dd/yyyy' }}</td>
+                    
+            </tr>
+
+    </table>
+</div>
