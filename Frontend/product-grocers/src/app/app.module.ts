@@ -18,7 +18,6 @@ import { OrdersComponent } from './orders/orders.component';
 import { ProfileInfoComponent } from './profile-info/profile-info.component';
 import { SendRequestComponent } from './send-request/send-request.component';
 import { UpdateOrderComponent } from './update-order/update-order.component';
-import { ViewTicketsComponent } from './view-tickets/view-tickets.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { UpdateProductComponent } from './product-components/update-product/update-product.component';
 import { DeleteProductComponent } from './product-components/delete-product/delete-product.component';
@@ -78,7 +77,6 @@ import { DeleteEmployeeComponent } from './delete-employee/delete-employee.compo
       {path: 'delete-product', component: DeleteProductComponent},
       {path: 'update-product', component: UpdateProductComponent},
       {path: 'sign-up', component: SignUpComponent},
-      {path: 'view-tickets', component: ViewTicketsComponent},
       {path: 'employee-ticket', component: EmployeeTicketComponent},
       {path: 'raise-ticket', component: RaiseTicketComponent},
       {path: 'view-requests', component: ViewRequestsComponent},

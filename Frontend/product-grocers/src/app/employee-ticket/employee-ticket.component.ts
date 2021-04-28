@@ -26,10 +26,6 @@ export class EmployeeTicketComponent implements OnInit {
     this.ticketSer.getTickets()
       .subscribe(tickets => {
         this.tickets = tickets;
-        for(let i=0; i<tickets.length; i++){
-          //this.links[i] = `localhost:9090/tickets/resolveTicketById/${tickets[i]._id}`;
-          this.tickets[i].link = this.sanitizer.bypassSecurityTrustUrl(`http://localhost:9090/ticket/resolveTicketById/${tickets[i]._id}`)
-        } 
       })
   }
 }
