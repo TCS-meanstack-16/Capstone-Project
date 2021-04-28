@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Order } from 'src/app/models/order';
 import { Products } from 'src/app/models/product';
 import { MessengerService } from 'src/app/services/messenger.service';
+import { OrderService } from 'src/app/services/order.service';
 
 @Component({
   selector: 'app-cart-list',
@@ -9,6 +11,8 @@ import { MessengerService } from 'src/app/services/messenger.service';
 })
 
 export class CartListComponent implements OnInit {
+
+  ordr = {};
 
   cartItems = [
     // {id: 1, productId: 1, productName: "test1", qty: 4, price:100},
@@ -23,9 +27,17 @@ export class CartListComponent implements OnInit {
 
   cartTotal = 0;
 
-  constructor(private msgSrvc: MessengerService) { }
+  constructor(private msgSrvc: MessengerService,
+    public ordrSrvc: OrderService) { }
 
   ngOnInit(): void {
+    //check if session exists
+    // if(sessionStorage.getItem('user1') != null ){
+    //   var jsonString = sessionStorage.getItem('user');
+    //   var jsonObject = JSON.parse(jsonString);
+    //   this.cartItems = jsonObject['products'];
+    //   console.log(this.cartItems);
+    // }
     //reading from the observable
     this.msgSrvc.getMsg().subscribe((product: Products) =>{ //BUG: product is of type unknown and is not getting typecasted to Class type Product
       this.addProductToCart(product);
@@ -97,10 +109,29 @@ export class CartListComponent implements OnInit {
 
   checkout(){
     //sessionStorage.setItem('user',this.cartItems);
-    var cartItemsJsonString = JSON.stringify(this.cartItems);
-    console.log(cartItemsJsonString);
-    sessionStorage.setItem('user', cartItemsJsonString);
-    console.log(sessionStorage.getItem('user'));
+    //var cartItemsJsonString = JSON.stringify(this.cartItems);
+    //console.log(cartItemsJsonString);
+    //sessionStorage.setItem('user', cartItemsJsonString);
+    //console.log(sessionStorage.getItem('user'));
+    // this.ordr.push({
+    //  total: this.cartTotal,
+    //  userId: 'user1',
+    //  products: this.cartItems,
+    //  //products: JSON.parse(sessionStorage.getItem('user')),
+    //  status: 'paid'
+    // });
+    //console.log(this.ordr);
+
+    this.ordr['total'] = this.cartTotal;
+    this.ordr['userId'] = 123;
+    this.ordr['products'] = this.cartItems;
+    this.ordr['status'] = 'paid'; 
+    console.log(this.ordr);
+    sessionStorage.setItem('user1',JSON.stringify(this.ordr));
+
+    //this.ordrSrvc.storeOrderDetailsInfo(this.ordr);
+    
+    
     //console.log(this.cartItems);
   }
 }

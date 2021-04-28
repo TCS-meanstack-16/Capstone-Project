@@ -33,6 +33,7 @@ import { CartItemComponent } from './cart/cart-list/cart-item/cart-item.componen
 import { ProductListComponent } from './cart/product-list/product-list.component';
 import { ProductItemComponent } from './cart/product-list/product-item/product-item.component';
 import { EmployeeTicketComponent } from './employee-ticket/employee-ticket.component';
+import { CheckoutCartComponent } from './cart/checkout-cart/checkout-cart.component';
 
 
 @NgModule({
@@ -64,6 +65,7 @@ import { EmployeeTicketComponent } from './employee-ticket/employee-ticket.compo
     CartItemComponent,
     ProductListComponent,
     ProductItemComponent,
+    CheckoutCartComponent,
   ],
   imports: [
     BrowserModule,
@@ -84,7 +86,8 @@ import { EmployeeTicketComponent } from './employee-ticket/employee-ticket.compo
       {path: 'reports', component: ReportsComponent},
       {path: 'edit-employees', component: EditEmployeesComponent},
       {path: 'login-page', component: LoginPageComponent},
-      {path: 'update-order', component: UpdateOrderComponent}
+      {path: 'update-order', component: UpdateOrderComponent},
+      {path: 'checkout-cart', component: CheckoutCartComponent}
     ]),
     AppRoutingModule,
     FormsModule,
