@@ -51,5 +51,8 @@ export class ProductService {
     return this.http.put("http://localhost:9090/product/updateProduct", productRef, { responseType: 'text' })
   }
 
+  reduceQuantity(productRef: any): any {
+    return this.http.put("http://localhost:9090/product/reduceQuantity", productRef, { responseType: 'text' })
+  }
   
 }

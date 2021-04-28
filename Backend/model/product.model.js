@@ -7,7 +7,9 @@ let ProductSchema = mongoose.Schema({
     _id: Number,
     name: String,
     price: Number,
-    quantity: Number
+    quantity: Number,
+    desc: String,
+    imgaeUrl: String
 })
 
 ProductSchema.plugin(AutoIncrement, {id: 'product_id_counter', inc_field: '_id'});
