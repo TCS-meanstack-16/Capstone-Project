@@ -67,14 +67,19 @@ let deleteUserById = (req, res) => {
 
 }
 let updateUser = (req, res) => {
-    let user = req.body
-    
-    UserModel.replaceOne(
-        {_id : user._id},
-        user,
-        {
-          upsert: true                  
-        }, (err, result) => {
+    let user = req.body.user
+    let userId = req.body.userId
+    UserModel.updateOne(
+        {_id : userId},
+        {$set: {
+            password : user.password,
+            address: user.address,
+            state: user.state,
+            city: user.city,
+            pincode: user.pincode,
+            phone: user.phone,
+            emailId: user.emailId
+        }}, (err, result) => {
             if (!err) {
                 if (result.nModified > 0) {
                     res.send("Record updated succesfully")
@@ -173,4 +178,24 @@ let userOrderPurchase = (req, res) => {
         })
 }
 
-module.exports = { getUserDetails, getUserById, storeUserDetails, deleteUserById, updateUser, unlockUser, updateUserFundsById, userOrderPurchase }
+let login = (req, res) => {
+    console.log("in login"); 
+    let email = req.body.email;
+    let password = req.body.password;
+
+    UserModel.findOne({emailId:email},(err,user) => {
+        try{
+            if(user.password != password){
+                res.send("Error: Incorrect password");
+            }
+        }catch(err){
+            console.log("in error");
+            res.send("Error: Username not found")
+            return;
+        }
+        console.log(user._id.toString())
+        res.send(user._id.toString());
+    })
+}
+
+module.exports = { getUserDetails, getUserById, storeUserDetails, deleteUserById, updateUser, unlockUser, updateUserFundsById, userOrderPurchase, login }

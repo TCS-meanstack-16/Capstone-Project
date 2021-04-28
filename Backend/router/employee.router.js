@@ -11,5 +11,6 @@ router.post("/createRequest", EmployeeController.createRequest);
 router.delete("/resolveRequest/:pid", EmployeeController.resolveRequest);
 router.get("/viewRequests",EmployeeController.getRequests)
 router.delete("/deleteRequest/:pid", EmployeeController.deleteRequest);
+router.get("/allEmployeeDetails",EmployeeController.getEmployeeDetails);
 
 module.exports=router;

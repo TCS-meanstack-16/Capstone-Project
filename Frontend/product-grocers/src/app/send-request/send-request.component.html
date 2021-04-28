@@ -1,1 +1,13 @@
-<p>send-request works!</p>
+<div>
+    <h2>Create Request</h2>
+    <form #requestRef="ngForm" (ngSubmit)="sendRequest(requestRef.value)">
+        <label>Product ID</label>
+        <input type="text" name="product_id" ngModel><br/>
+        <label>Price</label>
+        <input type="text" name="price" ngModel><br/>
+        <label>Quantity</label>
+        <input type="text" name="quantity" ngModel><br/>
+        <input type="submit" value="Store Request"/>
+        <input type="reset" value="Clear"/>
+    </form>
+</div>

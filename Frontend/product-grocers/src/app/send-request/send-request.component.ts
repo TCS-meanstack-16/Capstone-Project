@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { RequestService } from '../services/request.service';
+import { Request } from '../models/request.model';
+import { DomSanitizer } from '@angular/platform-browser'
 
 @Component({
   selector: 'app-send-request',
@@ -7,9 +10,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SendRequestComponent implements OnInit {
 
-  constructor() { }
+  requests:Request[] = []; 
+  constructor(public reqSer:RequestService) { }
 
   ngOnInit(): void {
+  }
+
+  sendRequest(requestRef:any){
+    console.log(requestRef);
+    this.reqSer.sendRequest(requestRef);
+  }
+
+  showTicket() {
+    this.reqSer.getRequests().subscribe(requests => {this.requests = requests;})  //Creates array of requests for html to display
   }
 
 }
