@@ -26,4 +26,8 @@ export class EmployeeService {
   changePassword(employeeRef:any){
       return this.http.patch("http://localhost:9090/employee/changePassword", employeeRef)
   }
+
+  retrieveAllEmployeeDetails(): Observable<Employee[]> {
+    return this.http.get<Employee[]>("http://localhost:9090/employee/allEmployeeDetails")
+  }
 }

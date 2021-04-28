@@ -27,9 +27,7 @@ let createEmployee = (req,res)=> {
    
     let employee = new EmployeeModel({
         name: req.body.name,
-        email: req.body.email,
-        password: req.body.password,
-        isAdmin: req.body.isAdmin
+        email: req.body.email
     });
 
     employee.save((err,result)=> {
