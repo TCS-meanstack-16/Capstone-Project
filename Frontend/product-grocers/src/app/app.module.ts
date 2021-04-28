@@ -24,6 +24,7 @@ import { UpdateProductComponent } from './product-components/update-product/upda
 import { DeleteProductComponent } from './product-components/delete-product/delete-product.component';
 import { AddProductComponent } from './product-components/add-product/add-product.component';
 import { RetrieveProductsComponent } from './product-components/retrieve-products/retrieve-products.component';
+import { GenerateReportsComponent } from './generate-reports/generate-reports.component';
 
 
 @NgModule({
@@ -48,6 +49,7 @@ import { RetrieveProductsComponent } from './product-components/retrieve-product
     DeleteProductComponent,
     AddProductComponent,
     RetrieveProductsComponent,
+    GenerateReportsComponent,
 
   ],
   imports: [
@@ -59,7 +61,7 @@ import { RetrieveProductsComponent } from './product-components/retrieve-product
       {path: 'update-product', component: UpdateProductComponent},
       {path: 'sign-up', component: SignUpComponent},
       {path: 'view-tickets', component: ViewTicketsComponent},
-      {path: 'employee-ticket', component: EmployeeTicketComponent},
+      //{path: 'employee-ticket', component: EmployeeTicketComponent},
       {path: 'raise-ticket', component: RaiseTicketComponent},
       {path: 'view-requests', component: ViewRequestsComponent},
       {path: 'send-requests', component: SendRequestComponent},
