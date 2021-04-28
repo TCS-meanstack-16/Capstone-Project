@@ -25,6 +25,8 @@ import { DeleteProductComponent } from './product-components/delete-product/dele
 import { AddProductComponent } from './product-components/add-product/add-product.component';
 import { RetrieveProductsComponent } from './product-components/retrieve-products/retrieve-products.component';
 import { EmployeeTicketComponent } from './employee-ticket/employee-ticket.component';
+import { AddEmployeeComponent } from './add-employee/add-employee.component';
+import { DeleteEmployeeComponent } from './delete-employee/delete-employee.component';
 
 
 @NgModule({
@@ -48,6 +50,8 @@ import { EmployeeTicketComponent } from './employee-ticket/employee-ticket.compo
     DeleteProductComponent,
     AddProductComponent,
     RetrieveProductsComponent,
+    AddEmployeeComponent,
+    DeleteEmployeeComponent,
 
   ],
   imports: [
@@ -68,7 +72,11 @@ import { EmployeeTicketComponent } from './employee-ticket/employee-ticket.compo
       {path: 'reports', component: ReportsComponent},
       {path: 'edit-employees', component: EditEmployeesComponent},
       {path: 'login-page', component: LoginPageComponent},
-      {path: 'update-order', component: UpdateOrderComponent}
+      {path: 'update-order', component: UpdateOrderComponent},
+      {path: 'add-employee', component: AddEmployeeComponent},
+      {path: 'delete-employee', component: DeleteEmployeeComponent}
+
+      
     ]),
     AppRoutingModule,
     FormsModule,
