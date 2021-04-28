@@ -68,7 +68,9 @@ let updateProduct = (req, res) => {
         { $set: 
             {  
                 price: req.body.price,
-                quantity: req.body.quantity
+                quantity: req.body.quantity,
+                desc: req.body.desc,
+                imageUrl: req.body.imageUrl
             }
         }, 
     (err, result) => {
@@ -85,4 +87,25 @@ let updateProduct = (req, res) => {
 
 }
 
-module.exports = { getProductDetails, getProductById, storeProductDetails, deleteProductById, updateProduct }
+let reduceQuantity = (req, res) => { 
+    let productId = req.body._id;
+    let quantity = req.body.quantity
+    ProductModel.updateOne(
+        { _id: productId }, 
+        { $inc: { quantity: -quantity }
+        }, 
+    (err, result) => {
+        if (!err) {
+            if (result.nModified > 0) {
+                res.send("Record updated succesfully")
+            } else {
+                res.send("Record is not available");
+            }
+        } else {
+            res.send("Error generated " + err);
+        }
+    })
+
+}
+
+module.exports = { getProductDetails, getProductById, storeProductDetails, deleteProductById, updateProduct, reduceQuantity}

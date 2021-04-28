@@ -5,12 +5,15 @@
                 <th>ProductName</th>
                 <th>Price</th>
                 <th>Quantity</th>
+                <th>Description</th>
             </tr>
             <tr *ngFor="let pp of products">
                     <td>{{pp._id}}</td>
                     <td>{{pp.name}}</td>
                     <td>{{pp.price}}</td>
                     <td>{{pp.quantity}}</td>
+                    <td>{{pp.desc}}</td>
             </tr>
+
     </table>
 </div>
