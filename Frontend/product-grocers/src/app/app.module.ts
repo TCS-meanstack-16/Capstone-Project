@@ -92,7 +92,8 @@ import { DeleteEmployeeComponent } from './delete-employee/delete-employee.compo
       {path: 'login-page', component: LoginPageComponent},
       {path: 'update-order', component: UpdateOrderComponent},
       {path: 'add-employee', component: AddEmployeeComponent},
-      {path: 'delete-employee', component: DeleteEmployeeComponent}
+      {path: 'delete-employee', component: DeleteEmployeeComponent},
+      {path: 'generate-reports', component: GenerateReportsComponent}
 
       
     ]),
