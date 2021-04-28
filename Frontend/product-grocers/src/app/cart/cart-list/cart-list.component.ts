@@ -29,7 +29,11 @@ export class CartListComponent implements OnInit {
     //reading from the observable
     this.msgSrvc.getMsg().subscribe((product: Products) =>{ //BUG: product is of type unknown and is not getting typecasted to Class type Product
       this.addProductToCart(product);
-    },error=>console.log(error)); 
+    },error=>console.log(error));
+
+    // this.msgSrvc.getDelMsg().subscribe((product: Products)=>{
+    //   this.removeProductFromCart(product);
+    // });
   }
 
   addProductToCart(product: Products){
@@ -41,7 +45,8 @@ export class CartListComponent implements OnInit {
     //iterate to check if product exists
     for(let i in this.cartItems){
       //if exists, increment quantity
-      if(this.cartItems[i].productId === product.id){
+      if(this.cartItems[i].productId === product._id){
+        console.log(i);
         this.cartItems[i].qty+=1;
         prodExists = true;
         break;
@@ -52,30 +57,6 @@ export class CartListComponent implements OnInit {
     if(!prodExists){
       this.pushToCart(product);
     }
-    
-    // //check if current cart is empty
-    // //Yes: then push values
-    // if(this.cartItems.length === 0){
-    //   this.pushToCart(product);
-    // }
-    // //No:
-    // else{
-    //   //iterate through items
-    //   for(let i in this.cartItems){
-    //     //if item already present, increment quantity
-    //     if(this.cartItems[i].productId === product.id){
-    //       this.cartItems[i].qty+=1;
-    //     }
-    //   }
-
-    //     //else push new item to cart
-    //     else{
-    //       this.pushToCart(product);
-    //     }
-    // }
-
-    
-    
 
     this.cartTotal = 0;
     this.cartItems.forEach(item=>{
@@ -83,13 +64,43 @@ export class CartListComponent implements OnInit {
     });
   }
 
+  // removeProductFromCart(product: Products){
+  //   //initialize product exists
+  //   let prodExists = true;
+
+  //   //iterate to check if product exists
+  //   for(let i in this.cartItems){
+  //     //if exists, increment quantity
+  //     if(this.cartItems[i].productId === product._id){
+  //       if(this.cartItems[i].qty>1){
+  //         this.cartItems[i].qty-=1;
+  //         break;
+  //       }
+  //       else{
+  //         prodExists = false;
+  //         this.cartItems.splice(Number(i),1);
+  //       }
+        
+  //     }
+  //   }
+  // }
+
   pushToCart(product: Products){
     this.cartItems.push({
       //id: product.id,
-      productId: product.id,
+      productId: product._id,
       productName: product.name,
       qty: 1,
       price: product.price
     });
+  }
+
+  checkout(){
+    //sessionStorage.setItem('user',this.cartItems);
+    var cartItemsJsonString = JSON.stringify(this.cartItems);
+    console.log(cartItemsJsonString);
+    sessionStorage.setItem('user', cartItemsJsonString);
+    console.log(sessionStorage.getItem('user'));
+    //console.log(this.cartItems);
   }
 }

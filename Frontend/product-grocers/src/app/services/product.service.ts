@@ -10,6 +10,8 @@ import { Products } from '../models/product';
 })
 export class ProductService {
 
+  pro: Array<Product>;
+
   products: Products[] = [
     new Products(1, 'Product 1', 'This is product 1 description. This is a nice product, please buy!', 100),
     new Products(2, 'Product 2', 'This is product 2 description. This is a nice product, please buy!', 200),
@@ -22,10 +24,10 @@ export class ProductService {
   ];
   constructor(public http: HttpClient) { }
 
-  getProducts(): Products[] {
+  getProducts(): Observable<Products[]> {
     //TODO: populate product from an API
     //Also return observable
-    return this.products;
+    return this.http.get<Products[]>("http://localhost:9090/product/allProductDetails");
   }
 
   
@@ -35,6 +37,7 @@ export class ProductService {
       subscribe(result => console.log(result), error => console.log(error));
   }
   retrieveAllProductDetails(): Observable<Product[]> {
+    //this.pro = this.http.get<Product[]>("http://localhost:9090/product/allProductDetails");
     return this.http.get<Product[]>("http://localhost:9090/product/allProductDetails")
   }
 
