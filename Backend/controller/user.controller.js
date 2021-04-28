@@ -173,4 +173,24 @@ let userOrderPurchase = (req, res) => {
         })
 }
 
-module.exports = { getUserDetails, getUserById, storeUserDetails, deleteUserById, updateUser, unlockUser, updateUserFundsById, userOrderPurchase }
+let login = (req, res) => {
+    console.log("in login"); 
+    let email = req.body.email;
+    let password = req.body.password;
+
+    UserModel.findOne({emailId:email},(err,user) => {
+        try{
+            if(user.password != password){
+                res.send("Error: Incorrect password");
+            }
+        }catch(err){
+            console.log("in error");
+            res.send("Error: Username not found")
+            return;
+        }
+        console.log(user._id.toString())
+        res.send(user._id.toString());
+    })
+}
+
+module.exports = { getUserDetails, getUserById, storeUserDetails, deleteUserById, updateUser, unlockUser, updateUserFundsById, userOrderPurchase, login }

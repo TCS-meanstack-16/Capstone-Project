@@ -1,11 +1,12 @@
 <div class="myclass">
     <h2>LOGIN PAGE</h2>
-    <table>
-     <tr>
-    <td><label>UserName:</label></td>
-    <td><input type="text" id="ename"/></td></tr>
-    <tr><td><label>Password</label></td>
-    <td><input type="password" id="area"/></td></tr>
-    <tr><td></td><td><input type="button" value="LOGIN" onclick="fun()"/></td></tr>
-</table>
+    <form #loginRef="ngForm" (ngSubmit)="checkLogin(loginRef.value)">
+        <label>Email:</label>
+        <input type="text" name="email" ngModel><br/>
+        <label>Password</label>
+        <input type="password" name="password" ngModel><br/>
+        <input type="submit" value="Login!"/>
+    </form>
+    <a routerLink="/sign-up">Sign Up!</a>
+
 </div>
