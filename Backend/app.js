@@ -9,7 +9,7 @@ let cors = require("cors");
 //Replace <username> and <password> with your username and password
 //"mongodb+srv://<username>:<password>@cluster0.7tart.mongodb.net/grocer?retryWrites=true&w=majority"
 
-let url = "mongodb+srv://miguel:zeus1007@cluster0.7tart.mongodb.net/grocer?retryWrites=true&w=majority";
+let url = "mongodb+srv://harsh:harshtesting01@cluster0.7tart.mongodb.net/grocer?retryWrites=true&w=majority";
 
 
 //middleware enable data from post method.
