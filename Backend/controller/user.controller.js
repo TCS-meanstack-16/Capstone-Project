@@ -67,14 +67,19 @@ let deleteUserById = (req, res) => {
 
 }
 let updateUser = (req, res) => {
-    let user = req.body
-    
-    UserModel.replaceOne(
-        {_id : user._id},
-        user,
-        {
-          upsert: true                  
-        }, (err, result) => {
+    let user = req.body.user
+    let userId = req.body.userId
+    UserModel.updateOne(
+        {_id : userId},
+        {$set: {
+            password : user.password,
+            address: user.address,
+            state: user.state,
+            city: user.city,
+            pincode: user.pincode,
+            phone: user.phone,
+            emailId: user.emailId
+        }}, (err, result) => {
             if (!err) {
                 if (result.nModified > 0) {
                     res.send("Record updated succesfully")

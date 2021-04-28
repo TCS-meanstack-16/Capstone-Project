@@ -14,8 +14,8 @@ export class EmployeeService {
     subscribe(result=>console.log(result),error=>console.log(error));
   }
 
-  getEmployee(id:any):Observable<Employee>{
-     return this.http.get<Employee>("http://localhost:9090/employee/retrieveEmployeeById/"+id)    //Should return array of tickets that can then be used to display tickets
+  getEmployee(id:any):Observable<Employee[]>{
+     return this.http.get<Employee[]>("http://localhost:9090/employee/retrieveEmployeeById/"+id)    //Should return array of tickets that can then be used to display tickets
   }
 
   //by default all HttpClient method return type is observable with json format data. 
@@ -24,7 +24,7 @@ export class EmployeeService {
   }
 
   changePassword(employeeRef:any){
-      return this.http.patch("http://localhost:9090/employee/changePassword", employeeRef)
+      return this.http.put("http://localhost:9090/employee/changePassword", employeeRef, { responseType: 'text' })
   }
 
   retrieveAllEmployeeDetails(): Observable<Employee[]> {
