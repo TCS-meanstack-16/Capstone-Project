@@ -24,6 +24,14 @@ import { UpdateProductComponent } from './product-components/update-product/upda
 import { DeleteProductComponent } from './product-components/delete-product/delete-product.component';
 import { AddProductComponent } from './product-components/add-product/add-product.component';
 import { RetrieveProductsComponent } from './product-components/retrieve-products/retrieve-products.component';
+import { HeaderComponent } from './shared/header/header.component';
+import { FooterComponent } from './shared/footer/footer.component';
+import { NavComponent } from './shared/nav/nav.component';
+import { FiltersComponent } from './cart/filters/filters.component';
+import { CartListComponent } from './cart/cart-list/cart-list.component';
+import { CartItemComponent } from './cart/cart-list/cart-item/cart-item.component';
+import { ProductListComponent } from './cart/product-list/product-list.component';
+import { ProductItemComponent } from './cart/product-list/product-item/product-item.component';
 
 
 @NgModule({
@@ -48,7 +56,14 @@ import { RetrieveProductsComponent } from './product-components/retrieve-product
     DeleteProductComponent,
     AddProductComponent,
     RetrieveProductsComponent,
-
+    HeaderComponent,
+    FooterComponent,
+    NavComponent,
+    FiltersComponent,
+    CartListComponent,
+    CartItemComponent,
+    ProductListComponent,
+    ProductItemComponent,
   ],
   imports: [
     BrowserModule,
@@ -59,7 +74,7 @@ import { RetrieveProductsComponent } from './product-components/retrieve-product
       {path: 'update-product', component: UpdateProductComponent},
       {path: 'sign-up', component: SignUpComponent},
       {path: 'view-tickets', component: ViewTicketsComponent},
-      {path: 'employee-ticket', component: EmployeeTicketComponent},
+      //{path: 'employee-ticket', component: EmployeeTicketComponent},
       {path: 'raise-ticket', component: RaiseTicketComponent},
       {path: 'view-requests', component: ViewRequestsComponent},
       {path: 'send-requests', component: SendRequestComponent},
