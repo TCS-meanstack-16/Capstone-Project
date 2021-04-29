@@ -35,6 +35,7 @@ import { ProductItemComponent } from './cart/product-list/product-item/product-i
 import { CheckoutCartComponent } from './cart/checkout-cart/checkout-cart.component';
 import { AddEmployeeComponent } from './add-employee/add-employee.component';
 import { DeleteEmployeeComponent } from './delete-employee/delete-employee.component';
+import { AddFundsComponent } from './add-funds/add-funds.component';
 
 
 
@@ -71,6 +72,7 @@ import { DeleteEmployeeComponent } from './delete-employee/delete-employee.compo
     ProductListComponent,
     ProductItemComponent,
     CheckoutCartComponent,
+    AddFundsComponent,
 
   ],
   imports: [
@@ -95,7 +97,9 @@ import { DeleteEmployeeComponent } from './delete-employee/delete-employee.compo
       {path: 'checkout-cart', component: CheckoutCartComponent},
       {path: 'add-employee', component: AddEmployeeComponent},
       {path: 'delete-employee', component: DeleteEmployeeComponent},
-      {path: 'generate-reports', component: GenerateReportsComponent}
+      {path: 'generate-reports', component: GenerateReportsComponent},
+      {path: 'add-funds', component: AddFundsComponent},
+      
 
     ]),
     AppRoutingModule,
