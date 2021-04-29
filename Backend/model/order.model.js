@@ -1,7 +1,6 @@
 let mongoose = require("mongoose");
 mongoose.Promise = global.Promise;      // creating reference. 
 
-const AutoIncrement = require('mongoose-sequence')(mongoose);
 
 let OrderSchema = mongoose.Schema({
     _id: Number,
@@ -13,7 +12,7 @@ let OrderSchema = mongoose.Schema({
 
 })
 
-OrderSchema.plugin(AutoIncrement, {id: 'order_id_counter', inc_field: '_id'});
+
 
 let OrderModel = mongoose.model("Order", OrderSchema, "orders");
 

@@ -127,11 +127,13 @@ let updateUserFundsById = (req, res) => {
     let funds = req.body.total;
     let orderId = req.body.orderId;
     let reason = req.body.reason;
+    let status = req.body.status;
     UserModel.update({ _id: userId },
         {
-            $inc: { funds: funds },
+            $inc: { funds: -funds },
             $set: {
-                "orders.$[outer].reason": reason
+                "orders.$[outer].reason": reason,
+                "orders.$[outer].status": status,
             }
         },
         {
@@ -150,22 +152,71 @@ let updateUserFundsById = (req, res) => {
         })
 }
 
+
+
+
 let userOrderPurchase = (req, res) => {
-    let order = req.body.order;
-    
-    UserModel.update({ _id: order.userId },
+    let _id = req.body.order._id
+    let total = req.body.order.total
+    let userId = req.body.order.userId
+    let date = req.body.order.date
+    let products = req.body.order.products
+    console.log(req.body)
+    UserModel.update({ _id: userId },
         {
-            $inc: { funds: -order.total },
+            $inc: { funds: -total },
             $push:
             {
-                "orders": order
+                "orders": {_id: _id, total: total, products: products, user_id: userId, date: date, status: "pending"}
             }
             , upsert: true
         },
         {
             new: true,
-            "arrayFilters": [{ "outer._id": order._id }]
+            "arrayFilters": [{ "outer._id": _id }]
         }, (err, result) => {
+            if (!err) {
+                if (result.nModified > 0) {
+                    res.send("Purchased succesfully")
+                } else {
+                    res.send("Record is not available");
+                }
+            } else {
+                res.send("Error generated " + err);
+            }
+        })
+}
+
+let login = (req, res) => {
+    console.log("in login"); 
+    let email = req.body.email;
+    let password = req.body.password;
+
+    UserModel.findOne({emailId:email},(err,user) => {
+        try{
+            if(user.password != password){
+                res.send("Error: Incorrect password");
+            }
+        }catch(err){
+            console.log("in error");
+            res.send("Error: Username not found")
+            return;
+        }
+        console.log(user._id.toString())
+        res.send(user._id.toString());
+    })
+}
+
+let addFunds = (req, res) => {
+    let userId = req.body.userId;
+    let funds = req.body.funds;
+    
+    UserModel.update({ _id: userId },
+        {
+            $inc: { funds: funds },
+            
+        },
+         (err, result) => {
             if (!err) {
                 if (result.nModified > 0) {
                     res.send("Record updated succesfully")
@@ -178,4 +229,4 @@ let userOrderPurchase = (req, res) => {
         })
 }
 
-module.exports = { getUserDetails, getUserById, storeUserDetails, deleteUserById, updateUser, unlockUser, updateUserFundsById, userOrderPurchase }
+module.exports = { getUserDetails, getUserById, storeUserDetails, deleteUserById, updateUser, unlockUser, updateUserFundsById, userOrderPurchase, login, addFunds }

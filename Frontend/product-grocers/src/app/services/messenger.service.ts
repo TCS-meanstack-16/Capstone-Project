@@ -9,6 +9,8 @@ export class MessengerService {
 
   subject = new Subject();
 
+  query = [];
+
   constructor() { }
 
   sendMsg(product: Products) {
@@ -23,4 +25,12 @@ export class MessengerService {
   getMsg() {
     return this.subject.asObservable();
   }
+
+  // sendDelMsg(product: Products){
+  //   this.subject.next(product);
+  // }
+
+  // getDelMsg(){
+  //   return this.subject.asObservable();
+  // }
 }
