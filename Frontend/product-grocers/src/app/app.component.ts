@@ -19,9 +19,7 @@ export class AppComponent {
     this.userID = JSON.parse((localStorage.getItem("userId")));
     let employee = this.empSer.getEmployee(this.userID).subscribe(employee =>{
       this.isAdmin = employee[0].isAdmin;
-      console.log(this.isAdmin);
     });
-    console.log(employee[0]);
   }
 
 }
