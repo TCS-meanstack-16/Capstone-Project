@@ -9,13 +9,15 @@ import { Product } from '../../models/product.model';
 })
 export class RetrieveProductsComponent implements OnInit {
 
+
   products?:Array<Product>
   constructor(public proService:ProductService) { }
 
   ngOnInit(): void {
     this.proService.retrieveAllProductDetails().subscribe(result=>console.log(result[0]));
     this.proService.retrieveAllProductDetails().subscribe(result=>this.products=result);
-    
   }
+
+  
   
 }
