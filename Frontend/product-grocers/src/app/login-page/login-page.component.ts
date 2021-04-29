@@ -27,9 +27,8 @@ export class LoginPageComponent implements OnInit {
         }
         incorrectAttempts++;
 
-        if(incorrectAttempts == 3){
-          console.log("User should be locked");
-          this.userSer.lockUser(id);
+        if(incorrectAttempts > 2){
+          this.userSer.lockUser(loginRef);
         }
 
         sessionStorage.setItem("incorrectAttempts", JSON.stringify(incorrectAttempts));

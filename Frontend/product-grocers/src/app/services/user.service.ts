@@ -38,9 +38,9 @@ export class UserService {
     return this.http.put("http://localhost:9090/user/userOrderPurchase", userRef, { responseType: 'text' })
   }
 
-  lockUser(id:any){
-    this.http.put("http://localhost:9090/user/lockUser/"+id,{});
+  lockUser(loginRef:any):any{
     console.log("User locked");
+    return this.http.put("http://localhost:9090/user/lockUser",loginRef, { responseType: 'text' }).subscribe((result) => {console.log(result)});
   }
 
   unlockUser(userRef: any): any {

@@ -116,15 +116,15 @@ let unlockUser = (req, res) => {
 }*/
 
 let unlockUser= (id)=> {
-    UserModel.updateOne({_id:id},{$set:{userLocked: false}},(err,result)=> {
+    UserModel.updateOne({_id:id},{$set:{userLocked: false}},(err,result)=> {res.send("success")
     })
 }
 
 let lockUser= (req,res)=> {
-    console.log("In lock user");
-    id = req.params.id;
-    console.log(id);
-    UserModel.updateOne({_id:id},{$set:{userLocked: true}},(err,result)=> {
+    let email = req.body.email;
+    UserModel.findOne({emailId:email},(err,user)=> {
+        user.userLocked = true;
+        user.save();
     })
 
 }
