@@ -19,7 +19,7 @@
     <hr>
 </div>
 
-  <div *ngIf="userID < 1000">
+  <div *ngIf="userID < 1000 && isLoggedIn">
     User
     <br>
     <a class="button" routerLink="/cart">Cart</a> |
