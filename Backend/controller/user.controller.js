@@ -1,5 +1,6 @@
 
 let UserModel = require("../model/user.model.js");
+let EmployeeModel = require("../model/employee.model");
 
 //Retrieve all user details 
 let getUserDetails = (req, res) => {
@@ -204,11 +205,28 @@ let login = (req, res) => {
                 res.send(null);
                 return;
             }
+        }catch(err){}
+
+        try{
+            res.send(user._id.toString());
+        }catch(err){}
+    })
+
+
+
+    EmployeeModel.findOne({email:email},(err,employee) => {
+        console.log("looking for employee");
+        console.log(employee);
+        try{
+            if(employee.password != password){
+                res.send(null);
+                return;
+            }
         }catch(err){
             res.send(null)
             return;
         }
-        res.send(user._id.toString());
+        res.send(employee._id.toString());
     })
 }
 
