@@ -10,7 +10,7 @@ export class AddFundsComponent implements OnInit {
 
   constructor(public usrService: UserService) { }
 
-  userId = localStorage.getItem('userId');
+  userId = JSON.parse(localStorage.getItem('userId'))
   ngOnInit(): void {
   }
 
