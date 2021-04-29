@@ -13,7 +13,7 @@ export class CheckoutCartComponent implements OnInit {
 
   cart = [];
   ordr = {};
-  userId = localStorage.getItem('userId');
+  userId = JSON.parse(localStorage.getItem('userId'))
   constructor(public usrService:UserService, public ordService:OrderService, public proService:ProductService, private router:Router ) { }
 
   ngOnInit(): void {
