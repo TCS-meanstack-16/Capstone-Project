@@ -31,7 +31,32 @@ export class GenerateReportsComponent implements OnInit {
         }
         
       })
+    } else if (reportRef.time == "range"){
+      this.totalSpent = 0
+      this.ordersPlaced = 0;
+      
+      var startDate = new Date(reportRef.start)
+      var endDate = new Date(reportRef.end)
+      var date = new Date(startDate)
+      var dates = []
+
+      //range of dates
+      while (date <= endDate){
+        var newDate = date.setDate(date.getDate() + 1);
+        date = new Date(newDate);
+        dates.push(date)
+      }
+      
+      this.orders?.forEach(order => {
+        var orderDate =  new Date(order.date).toISOString().slice(0, 10)
+        //check if range of dates are in orders
+        if (!!dates.find(date => {return new Date(date).toISOString().slice(0, 10) == orderDate})){
+          this.totalSpent = this.totalSpent + order.total
+          this.ordersPlaced += 1
+        }
+      })
     }
+
     this.totalSpent = "Total spent: " + this.totalSpent
     this.ordersPlaced = "Orders placed: " + this.ordersPlaced
   }
