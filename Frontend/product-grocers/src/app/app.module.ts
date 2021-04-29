@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { ExampleCompComponent } from './example-comp/example-comp.component';
 import { FormsModule }   from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
-//import { EmployeeTicketComponent } from './employee-ticket/employee-ticket.component';
+import { EmployeeTicketComponent } from './employee-ticket/employee-ticket.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { RaiseTicketComponent } from './raise-ticket/raise-ticket.component';
 import { EditProjectsComponent } from './edit-projects/edit-projects.component';
