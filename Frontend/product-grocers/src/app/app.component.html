@@ -5,43 +5,49 @@
   <a class="button" routerLink="/sign-up">Sign Up</a>
   <br> -->
 
+  <div *ngIf="isAdmin">
+    Admin
+    <br>
+    <a class="button" routerLink="/add-product">Add Product</a> |
+    <a class="button" routerLink="/delete-product">Delete Product</a> |
+    <a class="button" routerLink="/update-product">Update Product</a> |
+    <a class="button" routerLink="/retrieve-products">Retrieve Products</a> |
+    <a class="button" routerLink="/view-requests">View Requests</a> |
+    <a class="button" routerLink="/add-employee">Add Employee</a> |
+    <a class="button" routerLink="/delete-employee">Delete Employee</a> |
+    <a class="button" routerLink="/generate-reports">Generate Reports</a> |
+    <hr>
+</div>
 
-  Admin
-  <br>
-  <a class="button" routerLink="/add-product">Add Product</a> |
-  <a class="button" routerLink="/delete-product">Delete Product</a> |
-  <a class="button" routerLink="/update-product">Update Product</a> |
-  <a class="button" routerLink="/retrieve-products">Retrieve Products</a> |
-  <a class="button" routerLink="/view-requests">View Requests</a> |
-  <a class="button" routerLink="/add-employee">Add Employee</a> |
-  <a class="button" routerLink="/delete-employee">Delete Employee</a> |
-  <a class="button" routerLink="/generate-reports">Generate Reports</a> |
-  <hr>
+  <div *ngIf="userID < 1000">
+    User
+    <br>
+    <a class="button" routerLink="/cart">Cart</a> |
+    <a class="button" routerLink="/orders">Order Status</a> |
+    <a class="button" routerLink="/profile-info">Edit Profile</a> |
+    <a class="button" routerLink="/add-funds">Add funds</a> |
+    <hr>
+  </div>
 
-  User
-  <br>
-  <a class="button" routerLink="/cart">Cart</a> |
-  <a class="button" routerLink="/orders">Order Status</a> |
-  <a class="button" routerLink="/profile-info">Edit Profile</a> |
-  <a class="button" routerLink="/add-funds">Add funds</a> |
-  <hr>
-  
-  Employee
-  <br>
-  <a class="button" routerLink="/send-requests">Send Request</a> |
-  <a class="button" routerLink="/update-order">Update Order</a>|
-  <a class="button" routerLink="/employee-ticket">Unlock Users</a> |
-  <a class="button" routerLink="/edit-employees">Edit Profile</a> |
+  <div *ngIf="userID > 1000 && !isAdmin">
+    Employee
+    <br>
+    <a class="button" routerLink="/send-requests">Send Request</a> |
+    <a class="button" routerLink="/update-order">Update Order</a>|
+    <a class="button" routerLink="/employee-ticket">Unlock Users</a> |
+    <a class="button" routerLink="/edit-employees">Edit Profile</a> |
+    <hr/>
+  </div>
  
   <div class="row">
     <router-outlet></router-outlet>
   </div>
 
-  <div class="row">
+  <!-- <div class="row">
     <div class="col">
       <app-cart></app-cart>
     </div>
-  </div>
+  </div> -->
   
 
 

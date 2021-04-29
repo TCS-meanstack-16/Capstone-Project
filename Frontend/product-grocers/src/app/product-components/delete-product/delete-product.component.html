@@ -1,15 +1,18 @@
 <div>
     <h2>Delete Product</h2>
     <div>
-        <table border="1">
+        <table border="1" class="table-bordered">
+            <thead class="thead-dark">
                 <tr>
-                    <th>PId</th>
-                    <th>ProductName</th>
-                    <th>Price</th>
-                    <th>Quantity</th>
-                    <th>Description</th>
-                    <th>Delete</th>
+                    <th scope="col">PId</th>
+                    <th scope="col">ProductName</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Delete</th>
                 </tr>
+            </thead>
+            <tbody>
                 <tr *ngFor="let pp of products">
                         <td>{{pp._id}}</td>
                         <td>{{pp.name}}</td>
@@ -18,7 +21,7 @@
                         <td>{{pp.desc}}</td>
                         <td><button (click)="deleteById(pp._id)">Delete Product</button></td>
                 </tr>
-    
+            </tbody>
         </table>
     </div>
 </div>

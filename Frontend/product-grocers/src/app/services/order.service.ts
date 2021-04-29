@@ -9,9 +9,8 @@ import {Order} from '../models/order.model'
 export class OrderService {
 
   constructor(public http: HttpClient) { }
-  storeOrderDetailsInfo(orderRef: any) {
-    this.http.post("http://localhost:9090/order/storeOrderDetails", orderRef, { responseType: "text" }).
-      subscribe(result => console.log(result), error => console.log(error));
+  storeOrderDetailsInfo(orderRef: any): any {
+    return this.http.post("http://localhost:9090/order/storeOrderDetails", orderRef, { responseType: "text" })
   }
   retrieveAllOrderDetails(): Observable<Order[]> {
     return this.http.get<Order[]>("http://localhost:9090/order/allOrderDetails")

@@ -2,7 +2,7 @@
     <h2>Edit Profile</h2>
     <form #employeeRef="ngForm" (ngSubmit)="changePassword(employeeRef.value)">
         <label>Password</label>
-        <input [(ngModel)]="employee.password" type="password" name="password" ngModel/><br/>
+        <input type="password" name="password" ngModel/><br/>
         <input type="submit" value="Edit Profile"/>
     </form>
 </div>

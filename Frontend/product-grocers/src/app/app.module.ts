@@ -32,9 +32,10 @@ import { CartListComponent } from './cart/cart-list/cart-list.component';
 import { CartItemComponent } from './cart/cart-list/cart-item/cart-item.component';
 import { ProductListComponent } from './cart/product-list/product-list.component';
 import { ProductItemComponent } from './cart/product-list/product-item/product-item.component';
-import { EmployeeTicketComponent } from './employee-ticket/employee-ticket.component';
+import { CheckoutCartComponent } from './cart/checkout-cart/checkout-cart.component';
 import { AddEmployeeComponent } from './add-employee/add-employee.component';
 import { DeleteEmployeeComponent } from './delete-employee/delete-employee.component';
+import { AddFundsComponent } from './add-funds/add-funds.component';
 
 
 
@@ -70,7 +71,8 @@ import { DeleteEmployeeComponent } from './delete-employee/delete-employee.compo
     CartItemComponent,
     ProductListComponent,
     ProductItemComponent,
-
+    CheckoutCartComponent,
+    AddFundsComponent,
 
   ],
   imports: [
@@ -92,10 +94,13 @@ import { DeleteEmployeeComponent } from './delete-employee/delete-employee.compo
       {path: 'edit-employees', component: EditEmployeesComponent},
       {path: 'login-page', component: LoginPageComponent},
       {path: 'update-order', component: UpdateOrderComponent},
+      {path: 'checkout-cart', component: CheckoutCartComponent},
       {path: 'add-employee', component: AddEmployeeComponent},
-      {path: 'delete-employee', component: DeleteEmployeeComponent}
-
+      {path: 'delete-employee', component: DeleteEmployeeComponent},
+      {path: 'generate-reports', component: GenerateReportsComponent},
+      {path: 'add-funds', component: AddFundsComponent},
       
+
     ]),
     AppRoutingModule,
     FormsModule,
