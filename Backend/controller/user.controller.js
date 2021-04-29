@@ -116,8 +116,15 @@ let unlockUser = (req, res) => {
 }*/
 
 let unlockUser= (id)=> {
-    let userLocked = false;
-    UserModel.updateOne({_id:id},{$set:{userLocked: userLocked}},(err,result)=> {
+    UserModel.updateOne({_id:id},{$set:{userLocked: false}},(err,result)=> {
+    })
+}
+
+let lockUser= (req,res)=> {
+    console.log("In lock user");
+    id = req.params.id;
+    console.log(id);
+    UserModel.updateOne({_id:id},{$set:{userLocked: true}},(err,result)=> {
     })
 
 }
@@ -188,21 +195,19 @@ let userOrderPurchase = (req, res) => {
 }
 
 let login = (req, res) => {
-    console.log("in login"); 
     let email = req.body.email;
     let password = req.body.password;
 
     UserModel.findOne({emailId:email},(err,user) => {
         try{
             if(user.password != password){
-                res.send("Error: Incorrect password");
+                res.send(null);
+                return;
             }
         }catch(err){
-            console.log("in error");
-            res.send("Error: Username not found")
+            res.send(null)
             return;
         }
-        console.log(user._id.toString())
         res.send(user._id.toString());
     })
 }
@@ -229,4 +234,4 @@ let addFunds = (req, res) => {
         })
 }
 
-module.exports = { getUserDetails, getUserById, storeUserDetails, deleteUserById, updateUser, unlockUser, updateUserFundsById, userOrderPurchase, login, addFunds }
+module.exports = { getUserDetails, getUserById, storeUserDetails, deleteUserById, updateUser, unlockUser, lockUser, updateUserFundsById, userOrderPurchase, login, addFunds }

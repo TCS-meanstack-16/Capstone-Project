@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../services/login.service';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-login-page',
@@ -8,31 +9,37 @@ import { LoginService } from '../services/login.service';
 })
 export class LoginPageComponent implements OnInit {
 
-  constructor(public loginSer:LoginService) { }
+  constructor(public loginSer:LoginService, public userSer:UserService) { }
 
   ngOnInit(): void {
   }
 
   checkLogin(loginRef:any){
-    let id;
-    this.loginSer.attemptLogin(loginRef).then(
-      
-    );
+    this.loginSer.attemptLogin(loginRef).
+    subscribe(id=>{
+      console.log(id);
+      if(id == ""){
+        console.log("incorrect");
+        let incorrectAttempts = JSON.parse(sessionStorage.getItem("incorrectAttempts"));
+        console.log(incorrectAttempts);
+        if(incorrectAttempts == null){
+          incorrectAttempts = 0;
+        }
+        incorrectAttempts++;
 
-    console.log(id);
-    if(id == null){
-      let incorrectAttempts = JSON.parse(sessionStorage.getItem("incorrectAttempts"));
+        if(incorrectAttempts == 3){
+          console.log("User should be locked");
+          this.userSer.lockUser(id);
+        }
 
-      if(incorrectAttempts == null){
-        incorrectAttempts = 0;
+        sessionStorage.setItem("incorrectAttempts", JSON.stringify(incorrectAttempts));
       }
-      incorrectAttempts++;
-      localStorage.setItem("incorrectAttempts", JSON.stringify(incorrectAttempts));
-    }
-    else{
-      console.log(id)
-      localStorage.setItem("userId",JSON.stringify(id));
-    }
+      else{
+        localStorage.setItem("userId",JSON.stringify(id));
+      }
+    },error=>console.log(error));
+
+    
     
   }
 }
