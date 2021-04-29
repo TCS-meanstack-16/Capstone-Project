@@ -27,7 +27,6 @@ let getOrderById = (req,res)=> {
 let storeOrderDetails = (req,res)=> {
    
     let order = new OrderModel({
-        _id: req.body._id,
         total:req.body.total,
         userId:req.body.userId,
         products: req.body.products
@@ -35,7 +34,7 @@ let storeOrderDetails = (req,res)=> {
 
     order.save((err,result)=> {
         if(!err){
-            res.send("Order placed successfully ")
+            res.send(result)
             //res.json({"msg":"Record stored successfully"})
         }else {
             res.send(err);

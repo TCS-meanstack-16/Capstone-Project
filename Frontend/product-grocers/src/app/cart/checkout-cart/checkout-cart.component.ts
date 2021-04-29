@@ -36,8 +36,19 @@ export class CheckoutCartComponent implements OnInit {
     console.log(this.ordr);
     //sessionStorage.setItem('user1',JSON.stringify(this.ordr));
 
-    this.ordService.storeOrderDetailsInfo({_id: this.orders.length + 1, total: this.ordr['total'], userId: 2, products: this.ordr['products'], date: Date.now()});
     
+    
+    this.ordService.storeOrderDetailsInfo({total: this.ordr['total'], userId: 2, products: this.ordr['products']}).toPromise()
+    .then((value: any) => { 
+      console.log(JSON.parse(value)) 
+      this.usrService.userOrderPurchase({
+        order: JSON.parse(value), //gets order object,
+      }).subscribe((result: string) => {
+        console.log(result)
+      }); 
+    })
+      .catch((err: any) => { console.log(err) })
+
     this.ordr['products'].forEach(item =>{
       this.proService.reduceQuantity({productId: item.productId, quantity: item.qty}).subscribe((result: string) => {
         console.log(result)
@@ -46,12 +57,9 @@ export class CheckoutCartComponent implements OnInit {
 
     console.log("order length " +this.orders.length)
     
-    this.usrService.userOrderPurchase({
-      order: {_id: this.orders.length + 1, total: this.ordr['total'], userId: 2, products: this.ordr['products'], date: Date.now()}, //gets order object,
-    }).subscribe((result: string) => {
-      console.log(result)
-    }); 
+    
     //console.log(this.cartItems);
   }
+
 
 }
