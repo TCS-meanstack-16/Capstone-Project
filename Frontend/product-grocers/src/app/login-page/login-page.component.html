@@ -1,5 +1,15 @@
-<div class="myclass">
+<div class="myclass login">
     <h2>LOGIN PAGE</h2>
+
+    <div class="alert alert-danger" role="alert" *ngIf="login === false">
+        <div *ngIf="attemptsLeft > 0">
+            Invalid Credentials, please try again!
+        </div>
+        <div *ngIf="attemptsLeft === 0">
+            Account locked try again later!
+        </div> 
+    </div>
+      
     <form #loginRef="ngForm" (ngSubmit)="checkLogin(loginRef.value)">
         <label>Email:</label>
         <input type="text" name="email" ngModel><br/>
@@ -7,6 +17,7 @@
         <input type="password" name="password" ngModel><br/>
         <input type="submit" value="Login!"/>
     </form>
+    <span *ngIf="attemptsLeft<3">Attempts left: {{attemptsLeft}}</span><br/>
     <a routerLink="/sign-up">Sign Up!</a>
     <a routerLink="/raise-ticket">Unlock Account</a>
 

@@ -10,6 +10,8 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 })
 export class LoginPageComponent implements OnInit {
 
+  login = true;
+  attemptsLeft = 3;
   constructor(public loginSer:LoginService, public userSer:UserService, public route: Router) { }
 
   ngOnInit(): void {
@@ -21,12 +23,14 @@ export class LoginPageComponent implements OnInit {
       console.log(id);
       if(id == ""){
         console.log("incorrect");
+        this.login = false;
         let incorrectAttempts = JSON.parse(sessionStorage.getItem("incorrectAttempts"));
         console.log(incorrectAttempts);
         if(incorrectAttempts == null){
           incorrectAttempts = 0;
         }
         incorrectAttempts++;
+        this.attemptsLeft -= incorrectAttempts;
 
         if(incorrectAttempts > 2){
           this.userSer.lockUser(loginRef);
