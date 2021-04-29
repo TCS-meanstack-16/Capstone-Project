@@ -27,6 +27,8 @@ export class CartListComponent implements OnInit {
 
   cartTotal = 0;
 
+  userId = localStorage.getItem('userId');
+
   constructor(private msgSrvc: MessengerService,
     public ordrSrvc: OrderService) { }
 
@@ -123,7 +125,7 @@ export class CartListComponent implements OnInit {
     //console.log(this.ordr);
 
     this.ordr['total'] = this.cartTotal;
-    this.ordr['userId'] = 123;
+    this.ordr['userId'] = this.userId;
     this.ordr['products'] = this.cartItems;
     this.ordr['status'] = 'paid'; 
     console.log(this.ordr);

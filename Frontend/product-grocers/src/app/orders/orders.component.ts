@@ -9,7 +9,7 @@ import { UserService } from '../services/user.service';
 })
 export class OrdersComponent implements OnInit {
   user?:any
-  userId = 2;
+  userId = localStorage.getItem('userId');
   constructor(public usrService:UserService) { }
 
   ngOnInit(): void {

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { OrderService } from 'src/app/services/order.service';
 import { ProductService } from 'src/app/services/product.service';
 import { UserService } from 'src/app/services/user.service';
-import {Order} from '../../models/order.model' 
 
 @Component({
   selector: 'app-checkout-cart',
@@ -13,8 +13,8 @@ export class CheckoutCartComponent implements OnInit {
 
   cart = [];
   ordr = {};
-  orders?: any
-  constructor(public usrService:UserService, public ordService:OrderService, public proService:ProductService ) { }
+  userId = localStorage.getItem('userId');
+  constructor(public usrService:UserService, public ordService:OrderService, public proService:ProductService, private router:Router ) { }
 
   ngOnInit(): void {
 
@@ -23,14 +23,13 @@ export class CheckoutCartComponent implements OnInit {
       //console.log(jsonString);
       this.cart.push(jsonObject);
       console.log(this.cart[0]);
-      this.ordService.retrieveAllOrderDetails().subscribe(result => this.orders = result);
 
   }
 
   checkout(){
 
     this.ordr['total'] = this.cart[0].total;
-    this.ordr['userId'] = 2;
+    this.ordr['userId'] = this.userId;
     this.ordr['products'] = this.cart[0].products;
     this.ordr['status'] = 'paid'; 
     console.log(this.ordr);
@@ -38,7 +37,7 @@ export class CheckoutCartComponent implements OnInit {
 
     
     
-    this.ordService.storeOrderDetailsInfo({total: this.ordr['total'], userId: 2, products: this.ordr['products']}).toPromise()
+    this.ordService.storeOrderDetailsInfo({total: this.ordr['total'], userId: this.userId, products: this.ordr['products']}).toPromise()
     .then((value: any) => { 
       console.log(JSON.parse(value)) 
       this.usrService.userOrderPurchase({
@@ -53,9 +52,10 @@ export class CheckoutCartComponent implements OnInit {
       this.proService.reduceQuantity({productId: item.productId, quantity: item.qty}).subscribe((result: string) => {
         console.log(result)
       }); 
+
+      this.router.navigate(['/cart']);
     })
 
-    console.log("order length " +this.orders.length)
     
     
     //console.log(this.cartItems);
