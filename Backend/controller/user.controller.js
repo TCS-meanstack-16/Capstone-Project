@@ -200,19 +200,21 @@ let login = (req, res) => {
     let password = req.body.password;
 
     UserModel.findOne({emailId:email},(err,user) => {
+        console.log("looking for user");
         try{
             if(user.password != password){
                 res.send(null);
                 return;
             }
-        }catch(err){}
+        }catch(err){
+            console.log(err);
+        }
 
         try{
             res.send(user._id.toString());
+            return;
         }catch(err){}
     })
-
-
 
     EmployeeModel.findOne({email:email},(err,employee) => {
         console.log("looking for employee");
@@ -223,7 +225,6 @@ let login = (req, res) => {
                 return;
             }
         }catch(err){
-            res.send(null)
             return;
         }
         res.send(employee._id.toString());
