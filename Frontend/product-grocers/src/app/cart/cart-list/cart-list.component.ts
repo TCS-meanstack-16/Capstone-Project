@@ -38,6 +38,7 @@ export class CartListComponent implements OnInit {
     //   this.cartItems = jsonObject['products'];
     //   console.log(this.cartItems);
     // }
+
     //reading from the observable
     this.msgSrvc.getMsg().subscribe((product: Products) =>{ //BUG: product is of type unknown and is not getting typecasted to Class type Product
       this.addProductToCart(product);
@@ -70,6 +71,7 @@ export class CartListComponent implements OnInit {
       this.pushToCart(product);
     }
 
+    //COmpute Cart Total
     this.cartTotal = 0;
     this.cartItems.forEach(item=>{
       this.cartTotal+=(item.qty*item.price);

@@ -1,9 +1,18 @@
 <div class="card shadow-sm">
-    <img class="bd-placeholder-img card-img-top" width="100%" height="225" [src]="productItem.imageUrl"/>
+    <img class="bd-placeholder-img card-img-top" width="100%" height="225" [src]="productItem.imageUrl" alt=""/>
     
     <div class="card-body">
         <p class="card-text"><strong>{{productItem.name}}</strong></p>
-        <p class="card-text"><strong>{{ productItem.price |currency:"USD"}}</strong></p>
+        <div class="card-text">
+            <div class="row">
+                <div class="col">
+                    <strong>{{ productItem.price |currency:"USD"}}</strong>&nbsp;
+                </div>
+                <div class="col">
+                    <span>{{productItem.quantity}}</span>
+                </div>
+            </div>
+        </div>
         <p class="card-text">{{productItem.desc | slice: 0:40}} ...</p>
         <div class="d-flex justify-content-between align-items-center">
             <div class="btn-group">

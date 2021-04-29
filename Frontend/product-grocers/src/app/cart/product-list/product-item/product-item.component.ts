@@ -16,7 +16,13 @@ export class ProductItemComponent implements OnInit {
   }
 
   handleAddToCart(){
-    this.msgSrvc.sendMsg(this.productItem);
+    if(this.productItem.quantity>=1){
+      this.msgSrvc.sendMsg(this.productItem);
+      this.productItem.quantity-=1;
+    }
+    else{
+      window.alert("Item quantity depreciated!");
+    }
   }
 
   handleRemoveFromCart(){
