@@ -117,8 +117,7 @@ let unlockUser = (req, res) => {
 }*/
 
 let unlockUser= (id)=> {
-    UserModel.updateOne({_id:id},{$set:{userLocked: false}},(err,result)=> {res.send("success")
-    })
+    UserModel.updateOne({_id:id},{$set:{userLocked: false}},(err,result)=> {})
 }
 
 let lockUser= (req,res)=> {
