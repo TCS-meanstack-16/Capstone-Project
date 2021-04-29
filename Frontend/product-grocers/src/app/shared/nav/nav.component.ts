@@ -18,8 +18,8 @@ export class NavComponent implements OnInit {
   }
 
   logout(){
-    console.log("In signout");
     localStorage.setItem("userId","")
+    this.isLoggedIn = false;
   }
 
 }
