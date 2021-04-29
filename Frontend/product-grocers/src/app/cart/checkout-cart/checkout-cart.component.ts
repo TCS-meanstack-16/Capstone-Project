@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { User } from 'src/app/models/user.model';
 import { OrderService } from 'src/app/services/order.service';
 import { ProductService } from 'src/app/services/product.service';
 import { UserService } from 'src/app/services/user.service';
@@ -14,15 +15,17 @@ export class CheckoutCartComponent implements OnInit {
   cart = [];
   ordr = {};
   userId = JSON.parse(localStorage.getItem('userId'))
+  user: Array<User>;
   constructor(public usrService:UserService, public ordService:OrderService, public proService:ProductService, private router:Router ) { }
 
   ngOnInit(): void {
 
-      var jsonString = sessionStorage.getItem('user');
+      var jsonString = sessionStorage.getItem(this.userId);
       var jsonObject = JSON.parse(jsonString);
       //console.log(jsonString);
       this.cart.push(jsonObject);
-      console.log(this.cart[0]);
+      //console.log(this.cart[0]);
+      this.getCurrentUser(this.userId);
 
   }
 
@@ -32,7 +35,7 @@ export class CheckoutCartComponent implements OnInit {
     this.ordr['userId'] = this.userId;
     this.ordr['products'] = this.cart[0].products;
     this.ordr['status'] = 'paid'; 
-    console.log(this.ordr);
+    //console.log(this.ordr);
     //sessionStorage.setItem('user1',JSON.stringify(this.ordr));
 
     
@@ -59,6 +62,9 @@ export class CheckoutCartComponent implements OnInit {
     
     
     //console.log(this.cartItems);
+  }
+  getCurrentUser(id:any){
+    this.usrService.retrieveUserById(id).subscribe((res: Array<User>)=>this.user = res);
   }
 
 
