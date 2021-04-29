@@ -38,6 +38,11 @@ export class UserService {
     return this.http.put("http://localhost:9090/user/userOrderPurchase", userRef, { responseType: 'text' })
   }
 
+  lockUser(id:any){
+    this.http.put("http://localhost:9090/user/lockUser/"+id,{});
+    console.log("User locked");
+  }
+
   unlockUser(userRef: any): any {
     return this.http.put("http://localhost:9090/user/unlockUser", userRef, { responseType: 'text' })
   }

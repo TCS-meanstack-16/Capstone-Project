@@ -10,6 +10,7 @@ router.delete("/deleteUserById/:pid",UserController.deleteUserById);
 router.put("/updateUserFundsById",UserController.updateUserFundsById);
 router.put("/userOrderPurchase",UserController.userOrderPurchase);
 router.put("/unlockUser",UserController.unlockUser);
+router.put("/lockUser/:id",UserController.lockUser);
 router.put("/updateUser",UserController.updateUser);
 router.post("/login",UserController.login);
 router.put("/addFunds",UserController.addFunds);
