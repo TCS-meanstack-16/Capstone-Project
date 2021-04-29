@@ -3,7 +3,18 @@
     
     <div class="card-body">
         <p class="card-text"><strong>{{productItem.name}}</strong></p>
-        <p class="card-text"><strong>{{ productItem.price |currency:"USD"}}</strong></p>
+        <div class="row">
+            <div class="col">
+                <div class="card-text">
+                    <strong>{{ productItem.price |currency:"USD"}}</strong>
+                </div>
+            </div>
+            <div class="col">
+                <span>{{productItem.quantity}}</span>
+            </div>
+            
+        </div>
+        
         <p class="card-text">{{productItem.desc | slice: 0:40}} ...</p>
         <div class="d-flex justify-content-between align-items-center">
             <div class="btn-group">
