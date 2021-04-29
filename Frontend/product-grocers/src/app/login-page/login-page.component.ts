@@ -36,7 +36,8 @@ export class LoginPageComponent implements OnInit {
       }
       else{
         localStorage.setItem("userId",JSON.stringify(id));
-        this.route.navigate(['/cart']);
+        sessionStorage.setItem("incorrectAttempts","0");
+        this.route.navigate(['/']);
       }
     },error=>console.log(error));
 
