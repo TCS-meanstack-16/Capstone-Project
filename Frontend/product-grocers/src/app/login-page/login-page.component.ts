@@ -30,7 +30,7 @@ export class LoginPageComponent implements OnInit {
       localStorage.setItem("incorrectAttempts", JSON.stringify(incorrectAttempts));
     }
     else{
-      console.log(id)
+      console.log(id);
       localStorage.setItem("userId",JSON.stringify(id));
     }
     
