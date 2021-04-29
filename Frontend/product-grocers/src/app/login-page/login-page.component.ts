@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../services/login.service';
 import { UserService } from '../services/user.service';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
   selector: 'app-login-page',
@@ -9,7 +10,7 @@ import { UserService } from '../services/user.service';
 })
 export class LoginPageComponent implements OnInit {
 
-  constructor(public loginSer:LoginService, public userSer:UserService) { }
+  constructor(public loginSer:LoginService, public userSer:UserService, public route: Router) { }
 
   ngOnInit(): void {
   }
@@ -35,6 +36,7 @@ export class LoginPageComponent implements OnInit {
       }
       else{
         localStorage.setItem("userId",JSON.stringify(id));
+        this.route.navigate(['/cart']);
       }
     },error=>console.log(error));
 
