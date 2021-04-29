@@ -1,5 +1,8 @@
 
 <div>
+    <div>
+        <button type="button" class="btn btn-lg btn-primary" disabled>Current Funds: {{user[0].funds}}</button>
+    </div>
     <span>Total: {{cart[0].total}}</span><br/>
     <span>UserId: {{cart[0].userId}}</span><br/>
     <span>Products:</span><br/>
@@ -25,6 +28,7 @@
 
     </table>
 
-    <button type="button" class="btn btn-sm btn-primary" (click)="checkout()">Buy</button>
+    <button type="button" class="btn btn-sm btn-primary" *ngIf="user[0].funds < cart[0].total" (click)="checkout()" disabled>Buy</button>
+    <button type="button" class="btn btn-sm btn-primary" *ngIf="user[0].funds > cart[0].total" (click)="checkout()">Buy</button>
 
 </div>

@@ -3,6 +3,7 @@ import { Order } from 'src/app/models/order';
 import { Products } from 'src/app/models/product';
 import { MessengerService } from 'src/app/services/messenger.service';
 import { OrderService } from 'src/app/services/order.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-cart-list',
@@ -30,7 +31,8 @@ export class CartListComponent implements OnInit {
   userId = JSON.parse(localStorage.getItem('userId'))
 
   constructor(private msgSrvc: MessengerService,
-    public ordrSrvc: OrderService) { }
+    public ordrSrvc: OrderService,
+    public usrSrvc: UserService) { }
 
   ngOnInit(): void {
     //check if session exists
@@ -129,7 +131,7 @@ export class CartListComponent implements OnInit {
     this.ordr['products'] = this.cartItems;
     this.ordr['status'] = 'paid'; 
     console.log(this.ordr);
-    sessionStorage.setItem('user1',JSON.stringify(this.ordr));
+    sessionStorage.setItem(this.userId,JSON.stringify(this.ordr));
 
     //this.ordrSrvc.storeOrderDetailsInfo(this.ordr);
     
