@@ -55,7 +55,7 @@ export class UpdateOrderComponent implements OnInit {
       this.updateMsg = result;
     });
 
-    
+
 
 
 

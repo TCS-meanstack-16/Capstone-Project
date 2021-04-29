@@ -130,7 +130,7 @@ let updateUserFundsById = (req, res) => {
     let status = req.body.status;
     UserModel.update({ _id: userId },
         {
-            $inc: { funds: funds },
+            $inc: { funds: -funds },
             $set: {
                 "orders.$[outer].reason": reason,
                 "orders.$[outer].status": status,
@@ -152,32 +152,8 @@ let updateUserFundsById = (req, res) => {
         })
 }
 
-let updateUserStatus = (req, res) => {
-    let userId = req.body.userId
-    let status = req.body.status
-    let orderId = req.body.orderId;
-    console.log(req.body)
-    UserModel.updateOne({ _id: userId },
-        {
-            $set: {
-                "orders.$[outer].status": status,
-            }
-        },
-        {
-            new: true,
-            "arrayFilters": [{ "outer._id": orderId }]
-        }, (err, result) => {
-            if (!err) {
-                if (result.nModified > 0) {
-                    res.send("Record updated succesfully")
-                } else {
-                    res.send("Record is not available");
-                }
-            } else {
-                res.send("Error generated " + err);
-            }
-        })
-}
+
+
 
 let userOrderPurchase = (req, res) => {
     let _id = req.body.order._id
@@ -231,4 +207,26 @@ let login = (req, res) => {
     })
 }
 
-module.exports = { getUserDetails, getUserById, storeUserDetails, deleteUserById, updateUser, unlockUser, updateUserFundsById, userOrderPurchase, login, updateUserStatus }
+let addFunds = (req, res) => {
+    let userId = req.body.userId;
+    let funds = req.body.funds;
+    
+    UserModel.update({ _id: userId },
+        {
+            $inc: { funds: funds },
+            
+        },
+         (err, result) => {
+            if (!err) {
+                if (result.nModified > 0) {
+                    res.send("Record updated succesfully")
+                } else {
+                    res.send("Record is not available");
+                }
+            } else {
+                res.send("Error generated " + err);
+            }
+        })
+}
+
+module.exports = { getUserDetails, getUserById, storeUserDetails, deleteUserById, updateUser, unlockUser, updateUserFundsById, userOrderPurchase, login, addFunds }
