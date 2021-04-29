@@ -20,7 +20,11 @@ export class CheckoutCartComponent implements OnInit {
 
   ngOnInit(): void {
 
+<<<<<<< HEAD
       var jsonString = sessionStorage.getItem(this.userId);
+=======
+      var jsonString = sessionStorage.getItem('user1');
+>>>>>>> ddd8e4666b3d0f11efe9a0ce9c551a2bab43160d
       var jsonObject = JSON.parse(jsonString);
       //console.log(jsonString);
       this.cart.push(jsonObject);

@@ -3,24 +3,28 @@
         <h2>GENERATING REPORTS</h2>
         <table>
         
-            <tr>  <td>  <label for="name">AccountNumber :</label>  </td>
-              <td><input type="number" name="account" id="acc" required  ngModel/></td></tr>
-        
-            <tr><td>  <label for="lname">Funds :</label></td>
-              <td>  <input type="number" name="funds" id="fund" required ngModel/></td></tr>
+            
              
               <tr><td>  <label for="repo">Report :</label></td>
-                  <td> <select name="demo" id="#" required ngModel>
-                <option selected="selected" value="one">Daily Reports</option>
-                <option value="two">Weekly Report</option>
-                <option value="three">Monthly Report</option>
-                <option value="four">Product Report</option>
-                <option value="five">Customer Report</option>
+                  <td> <select  [(ngModel)]="option"  name="time" id="#" required ngModel>
+                <option selected="selected" value="daily">Daily Reports</option>
+                <option value="weekly">Weekly Report</option>
+                <option value="monthly">Monthly Report</option>
+                <!--<option value="four">Product Report</option>
+                <option value="five">Customer Report</option> -->
                 </select></td></tr>
-        
-          <tr> <td> <input type="reset" value="Reset All" class="submit" name="reset" id="reset" /></td>
+                <tr *ngIf= "option == 'daily'">
+                  <td><label for="">Pick Day</label></td>
+                  <td><input type="date" name="date" id="" ngModel></td>
+                </tr>
+                
+          <tr> <td> <input type="reset" value="Reset  All" class="submit" name="reset" id="reset" /></td>
           <td>  <input type="submit" value="Generate Reports" class="submit" name="submit" id="submit" /></td></tr>
        
       </table>
     </form>
+
+    {{totalSpent}}
+    <br>
+    {{ordersPlaced}}
 </div>
