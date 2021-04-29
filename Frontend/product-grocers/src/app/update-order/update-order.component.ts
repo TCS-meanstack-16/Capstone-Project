@@ -16,12 +16,15 @@ export class UpdateOrderComponent implements OnInit {
   total = 0;
   orderId = 0;
   option: string | undefined;
+  property: any;
 
   //Use order and user services
   constructor(public ordService: OrderService, public usrService: UserService) { }
 
   ngOnInit(): void {
     this.ordService.retrieveAllOrderDetails().subscribe(result => this.orders = result);
+
+
   }
 
   //Updates order status and refunds total if cancelled 
