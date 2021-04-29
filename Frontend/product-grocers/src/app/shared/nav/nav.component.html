@@ -7,6 +7,6 @@
       <a class="me-3 py-2 text-dark text-decoration-none" href="#">Profile</a>
       <!-- <a class="py-2 text-dark text-decoration-none" href="#">Pricing</a> -->
     </nav>&nbsp;
-    <a class="btn btn-outline-primary" routerLink="/login-page">Sign Up</a>&nbsp;
     <a class="btn btn-outline-primary" routerLink="/login-page">Log In</a>
+    <a *ngIf="isLoggedIn" class="btn btn-outline-primary" (click)="logout()">Sign Out</a>
   </div>
