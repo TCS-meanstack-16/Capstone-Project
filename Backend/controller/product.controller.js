@@ -88,8 +88,10 @@ let updateProduct = (req, res) => {
 }
 
 let reduceQuantity = (req, res) => { 
-    let productId = req.body._id;
+
+    let productId = req.body.productId;
     let quantity = req.body.quantity
+    console.log(req.body)
     ProductModel.updateOne(
         { _id: productId }, 
         { $inc: { quantity: -quantity }
@@ -97,7 +99,7 @@ let reduceQuantity = (req, res) => {
     (err, result) => {
         if (!err) {
             if (result.nModified > 0) {
-                res.send("Record updated succesfully")
+                res.send("Quantity reduced succesfully")
             } else {
                 res.send("Record is not available");
             }

@@ -151,24 +151,28 @@ let updateUserFundsById = (req, res) => {
 }
 
 let userOrderPurchase = (req, res) => {
-    let order = req.body.order;
-    
-    UserModel.update({ _id: order.userId },
+    let _id = req.body.order._id
+    let total = req.body.order.total
+    let userId = req.body.order.userId
+    let date = req.body.order.date
+    let products = req.body.order.products
+    console.log(req.body)
+    UserModel.update({ _id: userId },
         {
-            $inc: { funds: -order.total },
+            $inc: { funds: -total },
             $push:
             {
-                "orders": order
+                "orders": {_id: _id, total: total, products: products, user_id: userId, date: date}
             }
             , upsert: true
         },
         {
             new: true,
-            "arrayFilters": [{ "outer._id": order._id }]
+            "arrayFilters": [{ "outer._id": _id }]
         }, (err, result) => {
             if (!err) {
                 if (result.nModified > 0) {
-                    res.send("Record updated succesfully")
+                    res.send("Purchased succesfully")
                 } else {
                     res.send("Record is not available");
                 }
