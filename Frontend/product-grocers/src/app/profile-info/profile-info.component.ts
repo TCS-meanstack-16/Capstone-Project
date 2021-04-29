@@ -8,11 +8,12 @@ import { UserService } from '../services/user.service';
 })
 export class ProfileInfoComponent implements OnInit {
   user?: any;
-  userId = localStorage.getItem('userId'); //this is used to set the current user id. we need to find a way to get the current logged in userId
+  userId = JSON.parse(localStorage.getItem('userId')) 
   constructor(public usrService: UserService) { }
 
   ngOnInit(): void {
     this.getUser(this.userId)
+    console.log(this.userId)
   }
 
   updateUser(userRef: any) {

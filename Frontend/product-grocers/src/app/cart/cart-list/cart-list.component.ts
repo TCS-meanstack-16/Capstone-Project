@@ -27,7 +27,7 @@ export class CartListComponent implements OnInit {
 
   cartTotal = 0;
 
-  userId = localStorage.getItem('userId');
+  userId = JSON.parse(localStorage.getItem('userId'))
 
   constructor(private msgSrvc: MessengerService,
     public ordrSrvc: OrderService) { }
