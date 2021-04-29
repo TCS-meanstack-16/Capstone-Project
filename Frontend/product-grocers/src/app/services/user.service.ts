@@ -46,6 +46,12 @@ export class UserService {
     return this.http.put("http://localhost:9090/user/updateUser", userRef, { responseType: 'text' })
   }
 
+  updateUserStatus(userRef: any): any {
+    console.log(userRef)
+    return this.http.put("http://localhost:9090/user/updateUserStatus", userRef, { responseType: 'text' })
+  }
 
+
+ 
   
 }

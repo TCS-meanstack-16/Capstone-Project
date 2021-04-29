@@ -10,7 +10,7 @@
             </tr>
             <tr *ngFor="let order of user.orders">
                     <td>{{order._id}}</td>
-                    <td *ngFor="let product of order.products">{{product.name}} </td>
+                    <td *ngFor="let product of order.products">{{product.productName}} </td>
                     <td>${{order.total}}</td>
                     <td>{{order.status}}</td>
                     <td>{{order.date | date: 'MM/dd/yyyy' }}</td>

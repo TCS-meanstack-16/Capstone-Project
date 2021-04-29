@@ -127,11 +127,40 @@ let updateUserFundsById = (req, res) => {
     let funds = req.body.total;
     let orderId = req.body.orderId;
     let reason = req.body.reason;
+    let status = req.body.status;
     UserModel.update({ _id: userId },
         {
             $inc: { funds: funds },
             $set: {
-                "orders.$[outer].reason": reason
+                "orders.$[outer].reason": reason,
+                "orders.$[outer].status": status,
+            }
+        },
+        {
+            new: true,
+            "arrayFilters": [{ "outer._id": orderId }]
+        }, (err, result) => {
+            if (!err) {
+                if (result.nModified > 0) {
+                    res.send("Record updated succesfully")
+                } else {
+                    res.send("Record is not available");
+                }
+            } else {
+                res.send("Error generated " + err);
+            }
+        })
+}
+
+let updateUserStatus = (req, res) => {
+    let userId = req.body.userId
+    let status = req.body.status
+    let orderId = req.body.orderId;
+    console.log(req.body)
+    UserModel.updateOne({ _id: userId },
+        {
+            $set: {
+                "orders.$[outer].status": status,
             }
         },
         {
@@ -162,7 +191,7 @@ let userOrderPurchase = (req, res) => {
             $inc: { funds: -total },
             $push:
             {
-                "orders": {_id: _id, total: total, products: products, user_id: userId, date: date}
+                "orders": {_id: _id, total: total, products: products, user_id: userId, date: date, status: "pending"}
             }
             , upsert: true
         },
@@ -202,4 +231,4 @@ let login = (req, res) => {
     })
 }
 
-module.exports = { getUserDetails, getUserById, storeUserDetails, deleteUserById, updateUser, unlockUser, updateUserFundsById, userOrderPurchase, login }
+module.exports = { getUserDetails, getUserById, storeUserDetails, deleteUserById, updateUser, unlockUser, updateUserFundsById, userOrderPurchase, login, updateUserStatus }

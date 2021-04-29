@@ -12,5 +12,6 @@ router.put("/userOrderPurchase",UserController.userOrderPurchase);
 router.put("/unlockUser",UserController.unlockUser);
 router.put("/updateUser",UserController.updateUser);
 router.post("/login",UserController.login);
+router.post("/updateUserStatus",UserController.updateUserStatus);
 
 module.exports=router;
