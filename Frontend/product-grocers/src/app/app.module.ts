@@ -36,6 +36,9 @@ import { CheckoutCartComponent } from './cart/checkout-cart/checkout-cart.compon
 import { AddEmployeeComponent } from './add-employee/add-employee.component';
 import { DeleteEmployeeComponent } from './delete-employee/delete-employee.component';
 import { AddFundsComponent } from './add-funds/add-funds.component';
+import { UserComponent } from './user/user.component';
+import { AdminComponent } from './admin/admin.component';
+import { EmployeeComponent } from './employee/employee.component';
 
 
 
@@ -73,6 +76,9 @@ import { AddFundsComponent } from './add-funds/add-funds.component';
     ProductItemComponent,
     CheckoutCartComponent,
     AddFundsComponent,
+    UserComponent,
+    AdminComponent,
+    EmployeeComponent,
 
   ],
   imports: [
