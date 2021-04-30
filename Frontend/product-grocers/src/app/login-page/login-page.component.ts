@@ -30,7 +30,7 @@ export class LoginPageComponent implements OnInit {
           incorrectAttempts = 0;
         }
         incorrectAttempts++;
-        this.attemptsLeft -= incorrectAttempts;
+        this.attemptsLeft --;
 
         if(incorrectAttempts > 2){
           this.userSer.lockUser(loginRef);
