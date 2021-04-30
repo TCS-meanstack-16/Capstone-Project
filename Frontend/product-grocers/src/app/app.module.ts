@@ -78,6 +78,9 @@ import { AddFundsComponent } from './add-funds/add-funds.component';
   imports: [
     BrowserModule,
     RouterModule.forRoot([
+      {
+        path: '', pathMatch: 'full', redirectTo: 'login-page'
+      },
       {path: 'retrieve-products', component: RetrieveProductsComponent},
       {path: 'add-product', component: AddProductComponent},
       {path: 'delete-product', component: DeleteProductComponent},
