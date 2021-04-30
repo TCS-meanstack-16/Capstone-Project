@@ -56,7 +56,9 @@ app.use("/employee", Employee)
 app.use("/ticket", Ticket)
 app.use("/request", Request)
 
-
+app.get('*', function(req, res) {
+    res.redirect('/');
+});
 
 app.listen(9080, () => console.log("Server running on port number 9090"));
 
