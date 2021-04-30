@@ -29,14 +29,19 @@
         <td><input type="date" name="end" id="" ngModel></td>
       </tr>
       <tr>
-        <td> <input type="reset" value="Reset  All" class="submit" name="reset" id="reset" /></td>
-        <td> <input type="submit" value="Generate Reports" class="submit" name="submit" id="submit" /></td>
+        <td> <input type="reset" value="Reset  All" class="btn btn-danger" name="reset" id="reset" /></td>
+        <td> <input type="submit" value="Generate Reports" class="btn btn-primary" name="submit" id="submit" /></td>
       </tr>
 
     </table>
   </form>
-
-  <h2 *ngIf="ordersPlaced==0" >No orders!</h2>
+  <hr/>
+  <div class="card">
+    <div class="card-header">
+      <h2>Orders</h2>
+    </div>
+    <div class="card-body">
+      <h2 *ngIf="ordersPlaced==0" >No orders!</h2>
 
   <div *ngIf="ordersPlaced>0">
     Total Spent: {{totalSpent}}
@@ -47,7 +52,7 @@
   
 
   <div>
-    <h2>Orders</h2>
+    
     <div *ngIf="totalSpent != undefined">
       <table border="1" class="table-bordered">
         <thead>
@@ -75,6 +80,10 @@
       </table>
     </div>
   </div>
+    </div>
+  </div>
+
+  
 </div>
 
 </div>

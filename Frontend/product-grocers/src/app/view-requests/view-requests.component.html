@@ -25,8 +25,8 @@
                 <td>{{request.product_id}}</td>
                 <td>{{request.price}}</td>
                 <td>{{request.quantity}}</td>
-                <td><button (click)="acceptRequest(request._id)">Accept Request</button></td>
-                <td><button (click)="declineRequest(request._id)">Decline Request</button></td>
+                <td><button class="btn btn-success" (click)="acceptRequest(request._id)">Accept Request</button></td>
+                <td><button class="btn btn-danger" (click)="declineRequest(request._id)">Decline Request</button></td>
             </tr>
         </tbody>
         

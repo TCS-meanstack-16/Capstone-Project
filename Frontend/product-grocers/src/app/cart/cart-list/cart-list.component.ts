@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Order } from 'src/app/models/order';
 import { Products } from 'src/app/models/product';
 import { MessengerService } from 'src/app/services/messenger.service';
@@ -32,7 +33,8 @@ export class CartListComponent implements OnInit {
 
   constructor(private msgSrvc: MessengerService,
     public ordrSrvc: OrderService,
-    public usrSrvc: UserService) { }
+    public usrSrvc: UserService,
+    public route: Router,) { }
 
   ngOnInit(): void {
     //check if session exists
@@ -125,13 +127,20 @@ export class CartListComponent implements OnInit {
     //  status: 'paid'
     // });
     //console.log(this.ordr);
+    if(this.cartItems.length == 0){
+      window.alert("Cart is empty, try again!");
+    }
+    else{
+      this.ordr['total'] = this.cartTotal;
+      this.ordr['userId'] = this.userId;
+      this.ordr['products'] = this.cartItems;
+      this.ordr['status'] = 'paid'; 
+      console.log(this.ordr);
+      sessionStorage.setItem(this.userId,JSON.stringify(this.ordr));
+      this.route.navigate(['/checkout-cart']);
+    }
 
-    this.ordr['total'] = this.cartTotal;
-    this.ordr['userId'] = this.userId;
-    this.ordr['products'] = this.cartItems;
-    this.ordr['status'] = 'paid'; 
-    console.log(this.ordr);
-    sessionStorage.setItem(this.userId,JSON.stringify(this.ordr));
+    
 
     //this.ordrSrvc.storeOrderDetailsInfo(this.ordr);
     

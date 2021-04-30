@@ -10,21 +10,21 @@ export class RequestService {
 
   constructor(public http: HttpClient) { }
   sendRequest(reqRef: any) {
-    this.http.post("http://localhost:9090/request/storeRequest", reqRef, { responseType: "text" }).
+    this.http.post("http://18.234.172.203:9090/request/storeRequest", reqRef, { responseType: "text" }).
       subscribe(result => console.log(result), error => console.log(error));
   }
 
   getRequests():Observable<Request[]>{
-    return this.http.get<Request[]>("http://localhost:9090/request/showRequests")    //Should return array of tickets that can then be used to display tickets
+    return this.http.get<Request[]>("http://18.234.172.203:9090/request/showRequests")    //Should return array of tickets that can then be used to display tickets
  }
 
  acceptRequest(id:any){
-   this.http.delete("http://localhost:9090/request/acceptRequest/"+id,{responseType:'text'})
+   this.http.delete("http://18.234.172.203:9090/request/acceptRequest/"+id,{responseType:'text'})
    .subscribe(result=>console.log(result),error=>console.log(error));
  }
 
  deleteRequest(id:any){
-   this.http.delete("http://localhost:9090/request/deleteRequest/"+id,{responseType:'text'})
+   this.http.delete("http://18.234.172.203:9090/request/deleteRequest/"+id,{responseType:'text'})
    .subscribe(result=>console.log(result),error=>console.log(error));
  }
 }
