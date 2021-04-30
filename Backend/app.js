@@ -1,10 +1,11 @@
 //Load all required modules 
+let express = require("express");
 let app = require("express")();
 let bodyParser = require("body-parser");
 let mongoose = require("mongoose");
 let cors = require("cors");
 
-
+app.use(express.static(process.cwd()));
 //Database URL Details 
 //Replace <username> and <password> with your username and password
 //"mongodb+srv://<username>:<password>@cluster0.7tart.mongodb.net/grocer?retryWrites=true&w=majority"
@@ -42,11 +43,11 @@ var Request = require("./router/request.router.js");
 
 //Middleware 
 
-// http://localhost:9090/product/allProductDetails   Get App Product Details 
-// http://localhost:9090/product/retrieveProductById/102   Get App Product Details by Id  
-// http://localhost:9090/product/storeProductDetails    rest client or post man {"pid":103,"name":"Computer","price":43000}
-// http://localhost:9090/product/deleteProductById/101
-// http://localhost:9090/product/updateProductPrice  update price using pid {"pid":103,"price":48000}
+// http://18.234.172.203:9090/product/allProductDetails   Get App Product Details 
+// http://18.234.172.203:9090/product/retrieveProductById/102   Get App Product Details by Id  
+// http://18.234.172.203:9090/product/storeProductDetails    rest client or post man {"pid":103,"name":"Computer","price":43000}
+// http://18.234.172.203:9090/product/deleteProductById/101
+// http://18.234.172.203:9090/product/updateProductPrice  update price using pid {"pid":103,"price":48000}
 
 app.use("/product", Product)
 app.use("/order", Order)
