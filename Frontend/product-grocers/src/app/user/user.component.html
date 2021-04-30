@@ -1,3 +1,11 @@
 <p>user works!</p>
-<div class="panel"><a class="button" routerLink="[{ outlets: { sub: [cart] } }]">cart</a></div>
-<router-outlet name="sub"></router-outlet>
+<div *ngIf="userID < 1000 && isLoggedIn" class="background">
+    User
+    <br>
+    <div class="panel"><a class="button" routerLink="/user/cart">Cart</a></div>
+    <div class="panel"><a class="button" routerLink="/user/orders">Order Status</a></div>
+    <div class="panel"><a class="button" routerLink="/user/profile-info">Edit Profile</a></div>
+    <div class="panel"><a class="button" routerLink="/user/add-funds">Add funds</a></div>
+    <hr>
+  </div>
+<router-outlet></router-outlet>

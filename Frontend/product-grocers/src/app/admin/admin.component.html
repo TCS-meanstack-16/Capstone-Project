@@ -1,1 +1,14 @@
-<p>admin works!</p>
+<div *ngIf="isAdmin" class="background">
+    Admin
+    <br>
+    <div class="panel"><a class="button" routerLink="/admin/add-product">Add Product</a></div>
+    <div class="panel"><a class="button" routerLink="/admin/delete-product">Delete Product</a></div>
+    <div class="panel"><a class="button" routerLink="/admin/update-product">Update Product</a></div>
+    <div class="panel"><a class="button" routerLink="/admin/retrieve-products">Retrieve Products</a></div>
+    <div class="panel"><a class="button" routerLink="/admin/view-requests">View Requests</a></div>
+    <div class="panel"><a class="button" routerLink="/admin/add-employee">Add Employee</a></div>
+    <div class="panel"><a class="button" routerLink="/admin/delete-employee">Delete Employee</a></div>
+    <div class="panel"><a class="button" routerLink="/admin/generate-reports">Generate Reports</a></div>
+    <hr>
+    <router-outlet></router-outlet>
+</div>
