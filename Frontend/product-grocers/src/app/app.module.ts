@@ -78,6 +78,9 @@ import { AddFundsComponent } from './add-funds/add-funds.component';
   imports: [
     BrowserModule,
     RouterModule.forRoot([
+      {
+        path: '', pathMatch: 'full', redirectTo: 'login-page'
+      },
       {path: 'retrieve-products', component: RetrieveProductsComponent},
       {path: 'add-product', component: AddProductComponent},
       {path: 'delete-product', component: DeleteProductComponent},
@@ -99,6 +102,7 @@ import { AddFundsComponent } from './add-funds/add-funds.component';
       {path: 'delete-employee', component: DeleteEmployeeComponent},
       {path: 'generate-reports', component: GenerateReportsComponent},
       {path: 'add-funds', component: AddFundsComponent},
+      //{path: '/', redirectTo: '/login-page', pathMatch: 'full'}
       
 
     ]),
