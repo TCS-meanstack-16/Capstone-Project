@@ -11,7 +11,9 @@ export class AddFundsComponent implements OnInit {
   constructor(public usrService: UserService) { }
 
   userId = JSON.parse(localStorage.getItem('userId'))
+  
   ngOnInit(): void {
+    console.log(this.userId);
   }
 
   addFunds(userRef:any){
