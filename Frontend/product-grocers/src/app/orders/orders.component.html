@@ -1,9 +1,9 @@
 <div>
-    <h2>Your Orders</h2>
+    <h2></h2>
     <div class="card">
-        <div class="card-header"></div>
+        <div class="card-header"><strong>Your Orders </strong> <span style="font-size: 15px">[Total:  {{user.orders.length}} ]</span></div>
         <div class="card-body">
-            <div class="card" *ngFor="let order of user.orders">
+            <div class="card" *ngFor="let order of user.orders.slice().reverse()">
                 <div class="card-header">Order Id: {{order._id}}</div>
                 <div class="card-body">
                     <ul>
@@ -34,7 +34,8 @@
                 </div>
             </div>
         </div>
-        <div class="card-footer">
+        <div class="card-footer alert alert-primary">
+            Total Orders:  {{user.orders.length}}
         </div>
     </div>
     <!-- <table border="1">
