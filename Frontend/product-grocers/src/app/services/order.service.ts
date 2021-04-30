@@ -10,22 +10,22 @@ export class OrderService {
 
   constructor(public http: HttpClient) { }
   storeOrderDetailsInfo(orderRef: any): any {
-    return this.http.post("http://3.80.137.241:9090/order/storeOrderDetails", orderRef, { responseType: "text" })
+    return this.http.post("http://3.80.137.241:9080/order/storeOrderDetails", orderRef, { responseType: "text" })
   }
   retrieveAllOrderDetails(): Observable<Order[]> {
-    return this.http.get<Order[]>("http://3.80.137.241:9090/order/allOrderDetails")
+    return this.http.get<Order[]>("http://3.80.137.241:9080/order/allOrderDetails")
   }
 
   retrieveOrderById(id: any): Observable<Order[]> {
-    return this.http.get<Order[]>("http://3.80.137.241:9090/order/retrieveOrderById/" + id)
+    return this.http.get<Order[]>("http://3.80.137.241:9080/order/retrieveOrderById/" + id)
   }
 
   //by default all HttpClient method return type is observable with json format data. 
   deleteOrderById(id: any): any {
-    return this.http.delete("http://3.80.137.241:9090/order/deleteOrderById/" + id, { responseType: 'text' });
+    return this.http.delete("http://3.80.137.241:9080/order/deleteOrderById/" + id, { responseType: 'text' });
   }
 
   updateOrder(orderRef: any): any {
-    return this.http.put("http://3.80.137.241:9090/order/updateOrderStatus", orderRef, { responseType: 'text' })
+    return this.http.put("http://3.80.137.241:9080/order/updateOrderStatus", orderRef, { responseType: 'text' })
   }
 }

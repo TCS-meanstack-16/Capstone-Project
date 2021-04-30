@@ -43,11 +43,11 @@ var Request = require("./router/request.router.js");
 
 //Middleware 
 
-// http://3.80.137.241:9090/product/allProductDetails   Get App Product Details 
-// http://3.80.137.241:9090/product/retrieveProductById/102   Get App Product Details by Id  
-// http://3.80.137.241:9090/product/storeProductDetails    rest client or post man {"pid":103,"name":"Computer","price":43000}
-// http://3.80.137.241:9090/product/deleteProductById/101
-// http://3.80.137.241:9090/product/updateProductPrice  update price using pid {"pid":103,"price":48000}
+// http://3.80.137.241:9080/product/allProductDetails   Get App Product Details 
+// http://3.80.137.241:9080/product/retrieveProductById/102   Get App Product Details by Id  
+// http://3.80.137.241:9080/product/storeProductDetails    rest client or post man {"pid":103,"name":"Computer","price":43000}
+// http://3.80.137.241:9080/product/deleteProductById/101
+// http://3.80.137.241:9080/product/updateProductPrice  update price using pid {"pid":103,"price":48000}
 
 app.use("/product", Product)
 app.use("/order", Order)
