@@ -20,9 +20,11 @@ import { ReportsComponent } from './reports/reports.component';
 import { SendRequestComponent } from './send-request/send-request.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { UpdateOrderComponent } from './update-order/update-order.component';
+import { UserComponent } from './user/user.component';
 import { ViewRequestsComponent } from './view-requests/view-requests.component';
 
 const routes: Routes = [
+  {path: 'user', component: UserComponent},
   { path: 'retrieve-products', component: RetrieveProductsComponent },
   { path: 'add-product', component: AddProductComponent },
   { path: 'delete-product', component: DeleteProductComponent },
@@ -46,7 +48,35 @@ const routes: Routes = [
   { path: 'add-funds', component: AddFundsComponent },];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    RouterModule.forRoot(routes),
+    RouterModule.forChild([
+      {
+          path: 'user', component:
+            UserComponent,
+          children: [
+            { path: 'profile-info', component: ProfileInfoComponent },
+            { path: 'orders', component: OrdersComponent },
+            { path: 'cart', component: CartComponent , outlet: 'sub'},
+            { path: 'checkout-cart', component: CheckoutCartComponent },
+            { path: 'add-funds', component: AddFundsComponent },
+          ]
+      }
+    ]),
+  ],
+  /*
+  {
+    path: 'user', component:
+      UserComponent,
+    children: [
+      { path: 'profile-info', component: ProfileInfoComponent },
+      { path: 'orders', component: OrdersComponent },
+      { path: 'cart', component: CartComponent , outlet: 'sub'},
+      { path: 'checkout-cart', component: CheckoutCartComponent },
+      { path: 'add-funds', component: AddFundsComponent },
+    ]
+  }*/
+  
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
