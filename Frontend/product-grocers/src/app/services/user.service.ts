@@ -12,48 +12,48 @@ export class UserService {
 
 
   storeUserDetailsInfo(userRef: any) {
-    this.http.post("http://18.234.172.203:9090/user/storeUserDetails", userRef, { responseType: "text" }).
+    this.http.post("http://3.80.137.241:9090/user/storeUserDetails", userRef, { responseType: "text" }).
       subscribe(result => console.log(result), error => console.log(error));
 
 
     alert('Details printed on server console');
   }
   retrieveAllUserDetails(): Observable<User[]> {
-    return this.http.get<User[]>("http://18.234.172.203:9090/user/allUserDetails")
+    return this.http.get<User[]>("http://3.80.137.241:9090/user/allUserDetails")
   }
 
   retrieveUserById(id: any): Observable<User[]> {
-    return this.http.get<User[]>("http://18.234.172.203:9090/user/retrieveUserById/" + id)
+    return this.http.get<User[]>("http://3.80.137.241:9090/user/retrieveUserById/" + id)
   }
 
   //by default all HttpClient method return type is observable with json format data. 
   deleteUserById(id: any): any {
-    return this.http.delete("http://18.234.172.203:9090/user/deleteUserById/" + id, { responseType: 'text' });
+    return this.http.delete("http://3.80.137.241:9090/user/deleteUserById/" + id, { responseType: 'text' });
   }
   updateUserFundsById(userRef: any): any {
-    return this.http.put("http://18.234.172.203:9090/user/updateUserFundsById", userRef, { responseType: 'text' })
+    return this.http.put("http://3.80.137.241:9090/user/updateUserFundsById", userRef, { responseType: 'text' })
   }
 
   userOrderPurchase(userRef: any): any {
-    return this.http.put("http://18.234.172.203:9090/user/userOrderPurchase", userRef, { responseType: 'text' })
+    return this.http.put("http://3.80.137.241:9090/user/userOrderPurchase", userRef, { responseType: 'text' })
   }
 
   lockUser(loginRef:any):any{
     console.log("User locked");
-    return this.http.put("http://18.234.172.203:9090/user/lockUser",loginRef, { responseType: 'text' }).subscribe((result) => {console.log(result)});
+    return this.http.put("http://3.80.137.241:9090/user/lockUser",loginRef, { responseType: 'text' }).subscribe((result) => {console.log(result)});
   }
 
   unlockUser(userRef: any): any {
-    return this.http.put("http://18.234.172.203:9090/user/unlockUser", userRef, { responseType: 'text' })
+    return this.http.put("http://3.80.137.241:9090/user/unlockUser", userRef, { responseType: 'text' })
   }
 
   updateUser(userRef: any): any {
-    return this.http.put("http://18.234.172.203:9090/user/updateUser", userRef, { responseType: 'text' })
+    return this.http.put("http://3.80.137.241:9090/user/updateUser", userRef, { responseType: 'text' })
   }
 
   
   addFunds(userRef: any): any {
-    return this.http.put("http://18.234.172.203:9090/user/addFunds", userRef, { responseType: 'text' })
+    return this.http.put("http://3.80.137.241:9090/user/addFunds", userRef, { responseType: 'text' })
   }
 
 
