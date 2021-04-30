@@ -1,5 +1,5 @@
 
-<div *ngIf="userID < 1000 && isLoggedIn" class="background">
+<div *ngIf="userID < 1000 && isLoggedIn" class="">
     User
     <br>
     <div class="panel"><a class="button" routerLink="/user/cart">Cart</a></div>
@@ -8,4 +8,5 @@
     <div class="panel"><a class="button" routerLink="/user/add-funds">Add funds</a></div>
     <hr>
   </div>
+  <div *ngIf="!(userID < 1000 && isLoggedIn)">Access denied</div>
 <router-outlet></router-outlet>

@@ -1,4 +1,4 @@
-<div *ngIf="isAdmin" class="background">
+<div *ngIf="isAdmin" >
     Admin
     <br>
     <div class="panel"><a class="button" routerLink="/admin/add-product">Add Product</a></div>
@@ -12,3 +12,4 @@
     <hr>
     <router-outlet></router-outlet>
 </div>
+<div *ngIf="!(isAdmin)">Access denied</div>
