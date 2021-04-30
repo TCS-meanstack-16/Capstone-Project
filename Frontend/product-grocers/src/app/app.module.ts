@@ -99,6 +99,7 @@ import { AddFundsComponent } from './add-funds/add-funds.component';
       {path: 'delete-employee', component: DeleteEmployeeComponent},
       {path: 'generate-reports', component: GenerateReportsComponent},
       {path: 'add-funds', component: AddFundsComponent},
+      //{path: '/', redirectTo: '/login-page', pathMatch: 'full'}
       
 
     ]),
