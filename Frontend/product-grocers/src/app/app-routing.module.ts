@@ -27,7 +27,7 @@ import { ViewRequestsComponent } from './view-requests/view-requests.component';
 
 const routes: Routes = [
   {
-    path: '', pathMatch: 'full', redirectTo: 'login-component'
+    path: '', pathMatch: 'full', redirectTo: 'login-page'
   },
   {
     path: 'user', component:
