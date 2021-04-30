@@ -15,7 +15,7 @@
                     <td>{{e._id}}</td>
                     <td>{{e.name}}</td>
                     <td>{{e.email}}</td>
-                    <td><button *ngIf="e.isAdmin == false" (click)="deleteById(e._id)">Delete Employee</button> <div *ngIf="e.isAdmin == true">Admin</div></td>
+                    <td><button *ngIf="e.isAdmin == false" class="btn btn-danger" (click)="deleteById(e._id)">Delete Employee</button> <div *ngIf="e.isAdmin == true"><strong></strong>Admin</div></td>
                 </tr>
             </tbody>
                 
